@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'djoser',
     'accounts',
-  
+    'basespace',
     'social_django',
     'rest_framework_simplejwt',
     'rest_framework_simplejwt.token_blacklist'
