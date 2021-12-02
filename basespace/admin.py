@@ -1,14 +1,14 @@
 from django.contrib import admin
 
-from .models import Basespace
+from .models import Basespace,Project,Biosample,Applications
 admin.site.register(Basespace)
 
+admin.site.register(Project)
+
+admin.site.register(Biosample)
 
 
-
-
-
-
+admin.site.register(Applications)
 
 #Client ID = 54db1f602f6e4606b7268cd8086cfac1
 

@@ -1,6 +1,6 @@
 import {
 
-  ADD_DATA,
+  ADD_DATA,GET_BASESPACE
 
 } from "../actions/types";
 

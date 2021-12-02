@@ -23,7 +23,7 @@ const Basespace = () => {
             style={{ backgroundColor: "#fec107" }}
           >
             <Link
-              to="/basic-ui/who"
+              to="/basespace/projects/list"
               style={{ color: "black", textDecoration: "none" }}
             >
               <div className="card-body">

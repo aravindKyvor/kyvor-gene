@@ -8,8 +8,17 @@ import Reports1 from "./basic-ui/Reports1";
 import Basespace from "./basic-ui/Basespace";
 import Basespace1 from "./basic-ui/Basespace1";
 import Analysis2 from "./basic-ui/Analysis2";
-import WhoAmI from "../basespace/WhoAmI";
+import AddBiosample from "../basespace/AddBiosample";
 import EditForm from "./form-elements/EditForm";
+import Biosample from "../basespace/Biosample";
+import Update from "../basespace/UpdateBioSample";
+import ProjectList from "../basespace/projects/Projectlist";
+import Addproject from "../basespace/projects/Addproject";
+import UpdateProject from "../basespace/projects/UpdateProject";
+
+
+
+
 const Analysis = lazy(() => import("./basic-ui/Analysis"));
 const PrivateRoutes = lazy(() => import("../PrivateRoutes"));
 const Google = lazy(() => import("./user-pages/Google"));
@@ -47,8 +56,18 @@ class AppPrivateRoutess extends Component {
           <PrivateRoutes path="/basic-ui/Basespace1" component={Basespace1} />
           <PrivateRoutes path="/basic-ui/Basespace" component={Basespace} />
           <PrivateRoutes path="/basic-ui/Reports1" component={Reports1} />
-          <PrivateRoutes path="/basic-ui/who" component={WhoAmI} />
+          <PrivateRoutes path="/basespace/biosample" component={Biosample} />
+          <PrivateRoutes path="/basespace/addbiosample" component={AddBiosample} />
+          <PrivateRoutes path="/update/:id" component={Update} />
+
+
+
+          {/* projects folder */}
+          <PrivateRoutes path="/basespace/projects/list" component={ProjectList} />
+          <PrivateRoutes path="/basespace/projects/addproject" component={Addproject} />
+          <PrivateRoutes path="/project/update/:id" component={UpdateProject} />
           
+          {/*  */}
           <PrivateRoutes path="/basic-ui/Annovar" component={Annovar} />
           <PrivateRoutes
             path="/form-Elements/basic-elements"
