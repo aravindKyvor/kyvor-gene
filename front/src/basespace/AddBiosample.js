@@ -1,53 +1,53 @@
-import React from "react";
+import React,{useState} from "react";
 import { Form } from "react-bootstrap";
-import { Link } from "react-router-dom";
-class AddBiosample extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      biosample_id: "",
-      biosample_type: "",
-      biosample_name: "",
-      biosample_path: "",
-      library_id: "",
-      biosample_created_on: "",
-      project_id: "",
-    };
-    this.changeHandler = this.changeHandler.bind(this);
-    this.submitForm = this.submitForm.bind(this);
-  }
+import { Link ,useHistory} from "react-router-dom";
 
-  // Input Change Handler
-  changeHandler(event) {
-    this.setState({
-      [event.target.name]: event.target.value,
-    });
-  }
+import axios from 'axios'
 
-  // Submit Form
-  submitForm() {
-    fetch("http://127.0.0.1:8000/api/biosample/", {
-      method: "POST",
-      body: JSON.stringify(this.state),
-      headers: {
-        "Content-type": "application/json; charset=UTF-8",
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => console.log(data));
 
-    this.setState({
-      biosample_id: "",
-      biosample_type: "",
-      biosample_name: "",
-      biosample_path: "",
-      library_id: "",
-      biosample_created_on: "",
-      project_id: "",
-    });
-  }
+const AddBiosample = () => {
 
-  render() {
+    let history = useHistory();
+
+        const [biosample_id, setbiosample_id] = useState(null)
+        const [biosample_type,setbiosample_type ] = useState(null)
+        const [biosample_name,setbiosample_name ] = useState(null)
+        const [biosample_path,setbiosample_path ] = useState(null)
+        const [library_id, setlibrary_id] = useState(null)
+        const [biosample_created_on,setbiosample_created_on ] = useState(null)
+        const [project_id, setproject_id ] = useState(null)
+
+
+
+        const addNewSample = async () => {
+            let formField = new FormData()
+            formField.append('biosample_id',biosample_id)
+            formField.append('biosample_type',biosample_type)
+            formField.append('biosample_name',biosample_name)
+            formField.append('biosample_path',biosample_path)
+            formField.append('library_id',library_id)
+            formField.append('biosample_created_on',biosample_created_on)
+            formField.append('project_id',project_id)
+    
+         
+    
+            await axios({
+              method: 'post',
+              url:'http://127.0.0.1:8000/api/biosample/',
+              data: formField
+            }).then(response=>{
+              console.log(response.data);
+              history.push('/')
+            })
+        }
+    
+
+
+
+
+
+  
+
     return (
       <div>
         <div className="page-header">
@@ -64,7 +64,7 @@ class AddBiosample extends React.Component {
         <div className=" col-11 grid-margin stretch-card-1 ">
           <div className="card">
             <div className="card-body">
-              <form className="forms-sample" onClick={this.submitForm}>
+              <form className="forms-sample" onClick={addNewSample}>
                 <Form.Group>
                   <label htmlFor="exampleInputUsername1">BioSample Id</label>
                   <Form.Control
@@ -72,9 +72,9 @@ class AddBiosample extends React.Component {
                     id="exampleInputUsername1"
                     placeholder="project Name"
                     size="lg"
-                    value={this.state.biosample_id}
+                    value={biosample_id}
                     name="biosample_id"
-                    onChange={this.changeHandler}
+                    onChange={(e) => setbiosample_id(e.target.value)}
                     required
                   />
                 </Form.Group>
@@ -85,9 +85,9 @@ class AddBiosample extends React.Component {
                     id="exampleInputUsername1"
                     placeholder="project Name"
                     size="lg"
-                    value={this.state.biosample_type}
+                    value={biosample_type}
                     name="biosample_type"
-                    onChange={this.changeHandler}
+                    onChange={(e) => setbiosample_type(e.target.value)}
                     required
                   />
                 </Form.Group>
@@ -98,9 +98,9 @@ class AddBiosample extends React.Component {
                     className="form-control"
                     id="inputGroupFile01"
                     required
-                    value={this.state.biosample_name}
+                    value={biosample_name}
                     name="biosample_name"
-                    onChange={this.changeHandler}
+                    onChange={(e) => setbiosample_name(e.target.value)}
                   />
                 </Form.Group>
                 <Form.Group>
@@ -109,9 +109,9 @@ class AddBiosample extends React.Component {
                     type="text"
                     className="form-control"
                     id="inputGroupFile02"
-                    value={this.state.biosample_path}
+                    value={biosample_path}
                     name="biosample_path"
-                    onChange={this.changeHandler}
+                    onChange={(e) => setbiosample_path(e.target.value)}
                     required
                   />
                 </Form.Group>
@@ -121,9 +121,9 @@ class AddBiosample extends React.Component {
                     type="text"
                     className="form-control"
                     id="inputGroupFile03"
-                    value={this.state.library_id}
+                    value={library_id}
                     name="library_id"
-                    onChange={this.changeHandler}
+                    onChange={(e) => setlibrary_id(e.target.value)}
                     required
                   />
                 </Form.Group>
@@ -133,9 +133,9 @@ class AddBiosample extends React.Component {
                     type="date"
                     className="form-control"
                     id="inputGroupFile04"
-                    value={this.state.biosample_created_on}
+                    value={biosample_created_on}
                     name="biosample_created_on"
-                    onChange={this.changeHandler}
+                    onChange={(e) => setbiosample_created_on(e.target.value)}
                     required
                   />
                 </Form.Group>
@@ -146,9 +146,9 @@ class AddBiosample extends React.Component {
                     type="text"
                     className="form-control"
                     id="inputGroupFile04"
-                    value={this.state.project_id}
+                    value={project_id}
                     name="project_id"
-                    onChange={this.changeHandler}
+                    onChange={(e) => setproject_id(e.target.value)}
                     required
                   />
                 </Form.Group>
@@ -178,6 +178,6 @@ class AddBiosample extends React.Component {
       </div>
     );
   }
-}
+
 
 export default AddBiosample;
