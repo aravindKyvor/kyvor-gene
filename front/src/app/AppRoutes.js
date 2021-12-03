@@ -15,8 +15,8 @@ import Update from "../basespace/UpdateBioSample";
 import ProjectList from "../basespace/projects/Projectlist";
 import Addproject from "../basespace/projects/Addproject";
 import UpdateProject from "../basespace/projects/UpdateProject";
-
-
+import ApplicationList from "../basespace/applications/Applicationlist";
+import ApplicationDetail from "../basespace/applications/ApplicationDetail";
 
 
 const Analysis = lazy(() => import("./basic-ui/Analysis"));
@@ -68,6 +68,11 @@ class AppPrivateRoutess extends Component {
           <PrivateRoutes path="/project/update/:id" component={UpdateProject} />
           
           {/*  */}
+          <PrivateRoutes path="/basespace/applicationlist" component={ApplicationList} />
+          <PrivateRoutes path="/view/:id" component={ApplicationDetail} />
+
+
+          
           <PrivateRoutes path="/basic-ui/Annovar" component={Annovar} />
           <PrivateRoutes
             path="/form-Elements/basic-elements"

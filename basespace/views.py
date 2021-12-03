@@ -1,6 +1,7 @@
-from django.http.response import HttpResponse
+from django.http.response import HttpResponse,JsonResponse
 from django.shortcuts import render
 import requests
+from .forms import ApplicationForm
 import json
 from .serializers import BaseSpaceSerializer,ProjectSerializer,BiosampleSerializer
 from rest_framework import viewsets
@@ -25,29 +26,30 @@ class BiosampleView(viewsets.ModelViewSet):
     serializer_class = BiosampleSerializer
     
     
+@api_view(['GET'])
+def get_application(request):
+    basespace_credentials = usercreds()
+    request_url = "https://api.basespace.illumina.com/v1pre3/applications/"
 
-
-# @api_view(["GET"])
-# def home(request):
-#     basespace_credentials = usercreds()
-#     request_url = "https://api.basespace.illumina.com/v1pre3/applications"
-
-#     req = requests.get(request_url, headers=basespace_credentials["headers"])
-#     req_status = req.status_code
-#     print(req_status)
-
-#     if req_status == 200 or req_status == 201:
-#         return HttpResponse(req)
+    req = requests.get(request_url, headers=basespace_credentials["headers"])
+    req_status = req.status_code
     
     
-# @api_view(["GET"])
-# def home(request):
-#     basespace_credentials = usercreds()
-#     request_url = "https://api.basespace.illumina.com/v2/labrequeues"
 
-#     req = requests.get(request_url, headers=basespace_credentials["headers"])
-#     req_status = req.status_code
-#     print(req_status)
+    if req_status == 200 or req_status == 201:
+        
+        return JsonResponse(req.json())
 
-#     if req_status == 200 or req_status == 201:
-#         return HttpResponse(req)
+def subscribe(request):
+   
+    if request.method == 'POST':
+        form = ApplicationForm(request.POST)
+
+        if form.is_valid():
+           
+            new_id = form.cleaned_data['Id']
+            new_id.save()
+    else:
+        form = ApplicationForm()
+
+    return JsonResponse(form)

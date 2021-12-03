@@ -11,6 +11,7 @@ router.register(r'biosample', views.BiosampleView)
 
 urlpatterns = [
     path('', include(router.urls)),
+    path('applications/',views.get_application)
     
    
 ]
