@@ -63,10 +63,7 @@ class ProjectList extends React.Component {
     return (
       <div>
         <div className="page-header">
-          <h3 className="page-title">
-           
-            Project Lists{" "}
-          </h3>
+          <h3 className="page-title">Project Lists </h3>
         </div>
 
         <div className="row">
@@ -74,8 +71,17 @@ class ProjectList extends React.Component {
             <div className="card">
               <div className="card-body">
                 <h4 className="card-title">Project Lists </h4>
-              
-                <div class="text-center"></div>
+
+                <div class="text-center">
+                  <Link
+                    to="/basespace/projects/addproject"
+                    className="btn btn-secondary text-dark"
+                    style={{ backgroundColor: "#fec107", }}
+                  >
+                    {" "}
+                    ADD DETAILS
+                  </Link>
+                </div>
                 <hr />
 
                 <div className="table-responsive">

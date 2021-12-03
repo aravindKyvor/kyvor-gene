@@ -1,68 +1,65 @@
-import React from 'react';
+import React from "react";
 import { Form } from "react-bootstrap";
-import {Link } from 'react-router-dom'
-class Addproject extends React.Component{
-    constructor(){
-        super();
-        this.state={
-            project_name:'',
-            bs_default_project:'',
-            bs_project_id:'',
-            project_type:'',
-            project_created_on:'',
-            bs_user_id:'',
-           
-        }
-        this.changeHandler=this.changeHandler.bind(this);
-        this.submitForm=this.submitForm.bind(this);
-    }
+import { Link } from "react-router-dom";
+class Addproject extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      project_name: "",
+      bs_default_project: "",
+      bs_project_id: "",
+      project_type: "",
+      project_created_on: "",
+      bs_user_id: "",
+    };
+    this.changeHandler = this.changeHandler.bind(this);
+    this.submitForm = this.submitForm.bind(this);
+  }
 
-    // Input Change Handler
-    changeHandler(event){
-        this.setState({
-            [event.target.name]:event.target.value
-        });
-    }
+  // Input Change Handler
+  changeHandler(event) {
+    this.setState({
+      [event.target.name]: event.target.value,
+    });
+  }
 
-    // Submit Form
-    submitForm(){
-        fetch('http://127.0.0.1:8000/api/biosample/',{
-            method:'POST',
-            body:JSON.stringify(this.state),
-            headers:{
-                'Content-type': 'application/json; charset=UTF-8',
-            },
-        })
-        .then(response=>response.json())
-        .then((data)=>console.log(data));
+  // Submit Form
+  submitForm() {
+    fetch("http://127.0.0.1:8000/api/biosample/", {
+      method: "POST",
+      body: JSON.stringify(this.state),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => console.log(data));
 
-        this.setState({
-            project_name:'',
-            bs_default_project:'',
-            bs_project_id:'',
-            project_type:'',
-            project_created_on:'',
-            bs_user_id:'',
-        });
-    }
+    this.setState({
+      project_name: "",
+      bs_default_project: "",
+      bs_project_id: "",
+      project_type: "",
+      project_created_on: "",
+      bs_user_id: "",
+    });
+  }
 
-    render(){
-        return (
-            <div>
-                <div className="page-header">
-                         <h3 className="page-projectName"> Adding Project Form </h3>
-                            <nav aria-label="breadcrumb">
-                                <ol className="breadcrumb">
-                                <li className="breadcrumb-item">
-                                    <a href="!#" onClick={(event) => event.preventDefault()}>
-                                    
-                                    </a>
-                                </li>
-                                </ol>
-                            </nav>
-                 </div>
+  render() {
+    return (
+      <div>
+        <div className="page-header">
+          <h3 className="page-projectName"> Adding Project Form </h3>
+          <nav aria-label="breadcrumb">
+            <ol className="breadcrumb">
+              <li className="breadcrumb-item">
+                <a href="!#" onClick={(event) => event.preventDefault()}></a>
+              </li>
+            </ol>
+          </nav>
+        </div>
 
-                 <div className=" col-11 grid-margin stretch-card-1 ">
+        <div className=" col-11 grid-margin stretch-card-1 ">
           <div className="card">
             <div className="card-body">
               <form className="forms-sample" onClick={this.submitForm}>
@@ -73,18 +70,24 @@ class Addproject extends React.Component{
                     id="exampleInputUsername1"
                     placeholder="project Name"
                     size="lg"
-                    value={this.state.project_name} name="project_name" onChange={this.changeHandler}
+                    value={this.state.project_name}
+                    name="project_name"
+                    onChange={this.changeHandler}
                     required
                   />
                 </Form.Group>
                 <Form.Group>
-                <label htmlFor="exampleInputUsername1">Basespace Default Project</label>
+                  <label htmlFor="exampleInputUsername1">
+                    Basespace Default Project
+                  </label>
                   <Form.Control
                     type="text"
                     id="exampleInputUsername1"
                     placeholder="project Name"
                     size="lg"
-                    value={this.state.bs_default_project} name="bs_default_project" onChange={this.changeHandler}
+                    value={this.state.bs_default_project}
+                    name="bs_default_project"
+                    onChange={this.changeHandler}
                     required
                   />
                 </Form.Group>
@@ -95,8 +98,9 @@ class Addproject extends React.Component{
                     className="form-control"
                     id="inputGroupFile01"
                     required
-                    value={this.state.bs_project_id} name="bs_project_id" onChange={this.changeHandler}
-                   
+                    value={this.state.bs_project_id}
+                    name="bs_project_id"
+                    onChange={this.changeHandler}
                   />
                 </Form.Group>
                 <Form.Group>
@@ -105,7 +109,9 @@ class Addproject extends React.Component{
                     type="text"
                     className="form-control"
                     id="inputGroupFile02"
-                    value={this.state.project_type} name="project_type" onChange={this.changeHandler}
+                    value={this.state.project_type}
+                    name="project_type"
+                    onChange={this.changeHandler}
                     required
                   />
                 </Form.Group>
@@ -115,7 +121,9 @@ class Addproject extends React.Component{
                     type="date"
                     className="form-control"
                     id="inputGroupFile03"
-                    value={this.state.project_created_on} name="project_created_on" onChange={this.changeHandler}
+                    value={this.state.project_created_on}
+                    name="project_created_on"
+                    onChange={this.changeHandler}
                     required
                   />
                 </Form.Group>
@@ -125,11 +133,12 @@ class Addproject extends React.Component{
                     type="text"
                     className="form-control"
                     id="inputGroupFile04"
-                    value={this.state.bs_user_id} name="bs_user_id" onChange={this.changeHandler}
+                    value={this.state.bs_user_id}
+                    name="bs_user_id"
+                    onChange={this.changeHandler}
                     required
                   />
                 </Form.Group>
-              
 
                 <div className="col text-center">
                   <button
@@ -144,7 +153,7 @@ class Addproject extends React.Component{
               <div className="border border-light p-3 mb-4">
                 <div className="text-center">
                   <span>
-                    <Link to="/basic-ui/Analysis">
+                    <Link to="/basic-ui/Basespace">
                       <button className="btn btn-light btn-sm"> Cancel</button>
                     </Link>
                   </span>
@@ -153,12 +162,9 @@ class Addproject extends React.Component{
             </div>
           </div>
         </div>
-            </div>
-
-            
-            
-        );
-    }
+      </div>
+    );
+  }
 }
 
 export default Addproject;
