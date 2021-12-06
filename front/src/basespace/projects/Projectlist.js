@@ -70,9 +70,13 @@ class ProjectList extends React.Component {
           <div className="col-12 grid-margin">
             <div className="card">
               <div className="card-body">
-                <h4 className="card-title">Project Lists </h4>
+              <h4 className="card-header d-flex justify-content-between align-items-center">Project Lists
+                
+                <Link to='/basespace/projects/addproject' style={{textDecoration:'none'}}><button type="button" className="btn btn-sm" style={{backgroundColor:'#fec107'}}>Add </button></Link>
+                <Link to='/basespace/projects/addproject' style={{textDecoration:'none'}}><button type="button" className="btn btn-sm" style={{backgroundColor:'#fec107'}}>Back </button></Link>
+                </h4>
 
-                <div class="text-center">
+                {/* <div class="text-center">
                   <Link
                     to="/basespace/projects/addproject"
                     className="btn btn-secondary text-dark"
@@ -81,7 +85,7 @@ class ProjectList extends React.Component {
                     {" "}
                     ADD DETAILS
                   </Link>
-                </div>
+                </div> */}
                 <hr />
 
                 <div className="table-responsive">

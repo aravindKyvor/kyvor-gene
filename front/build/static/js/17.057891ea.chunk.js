@@ -1,2 +1,0 @@
-(this.webpackJsonpfront=this.webpackJsonpfront||[]).push([[17],{916:function(t,n,e){"use strict";e.r(n),e.d(n,"BlankPage",(function(){return s}));var r=e(35),a=e(36),c=e(38),u=e(37),i=e(0),o=e(1),s=function(t){Object(c.a)(e,t);var n=Object(u.a)(e);function e(){return Object(r.a)(this,e),n.apply(this,arguments)}return Object(a.a)(e,[{key:"render",value:function(){return Object(o.jsx)("div",{})}}]),e}(i.Component);n.default=s}}]);
-//# sourceMappingURL=17.057891ea.chunk.js.map

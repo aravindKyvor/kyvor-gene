@@ -95,4 +95,4 @@ class Biosample(models.Model):
     biosample_created_on = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return "ID: %s, BiosampleName: %s" % (self.biosample_id, self.biosample_name)
+        return "ID: %s, BiosampleName: %s" % (self.project_id, self.biosample_name)
