@@ -39,9 +39,14 @@ const Basespace = () => {
             className="card  card-img-holder text-black"
             style={{ backgroundColor: "#fec107" }}
           >
+             <Link
+              to="/basespace/users/whoami"
+              style={{ color: "black", textDecoration: "none" }}
+            >
             <div className="card-body">
               <h4 className="font-weight-normal mb-3 text-center">WhoAmI</h4>
             </div>
+            </Link>
           </div>
         </div>
         <div className="col-md-4 stretch-card grid-margin">

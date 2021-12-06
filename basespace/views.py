@@ -39,17 +39,20 @@ def get_application(request):
     if req_status == 200 or req_status == 201:
         
         return JsonResponse(req.json())
+    
+    
+    
+    
+@api_view(['GET'])
+def get_user(request):
+    basespace_credentials = usercreds()
+    request_url = "https://api.basespace.illumina.com/v1pre3/users/current/"
 
-def subscribe(request):
-   
-    if request.method == 'POST':
-        form = ApplicationForm(request.POST)
+    req = requests.get(request_url, headers=basespace_credentials["headers"])
+    req_status = req.status_code
+    
+    
 
-        if form.is_valid():
-           
-            new_id = form.cleaned_data['Id']
-            new_id.save()
-    else:
-        form = ApplicationForm()
-
-    return JsonResponse(form)
+    if req_status == 200 or req_status == 201:
+        
+        return JsonResponse(req.json())

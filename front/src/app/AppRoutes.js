@@ -1,5 +1,5 @@
 import React, { Component, Suspense, lazy } from "react";
-import {Router, IndexRoute } from "react-router";
+
 import { Switch, Route } from "react-router-dom";
 import Projectform from "./Projectform";
 import ReportsTable from "./basic-ui/ReportsTable";
@@ -18,7 +18,7 @@ import Addproject from "../basespace/projects/Addproject";
 import UpdateProject from "../basespace/projects/UpdateProject";
 import ApplicationList from "../basespace/applications/Applicationlist";
 import ApplicationDetail from "../basespace/applications/ApplicationDetail";
-
+import WhoAmI from "../basespace/users/WhoAmI";
 const Analysis = lazy(() => import("./basic-ui/Analysis"));
 const PrivateRoutes = lazy(() => import("../PrivateRoutes"));
 const Google = lazy(() => import("./user-pages/Google"));
@@ -91,6 +91,11 @@ class AppPrivateRoutess extends Component {
             exact
             path="/basespace/projects/addproject"
             component={Addproject}
+          />
+          <PrivateRoutes
+            exact
+            path="/basespace/users/whoami"
+            component={WhoAmI}
           />
           <PrivateRoutes
             exact

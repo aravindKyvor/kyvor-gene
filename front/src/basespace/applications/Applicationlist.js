@@ -19,27 +19,44 @@ const ApplicationList = (props) => {
   };
   return (
     <div>
-        <div className="page-header">
-          <h3 className="page-title">Application Lists </h3>
-        </div>
-        <br/>
-      <Table  responsive>
-        <thead style={{backgroundColor:'#fec107'   }}>
+      <div className="page-header">
+        <h3 className="page-title">Application Lists </h3>
+      </div>
+      <br />
+      <Table responsive>
+        <thead style={{ backgroundColor: "#fec107" }}>
           <tr>
-            <th><strong>ApplicationId</strong></th>
-            <th><strong>ApplicationName</strong></th>
-            <th><strong>CompanyName</strong></th>
-            <th><strong>ApplicationHref</strong></th>
+            <th>
+              <strong>ApplicationId</strong>
+            </th>
+            <th>
+              <strong>ApplicationName</strong>
+            </th>
+            <th>
+              <strong>CompanyName</strong>
+            </th>
+            <th>
+              <strong>ApplicationHref</strong>
+            </th>
           </tr>
         </thead>
-        <tbody >
+        <tbody>
           {applications.map((application, index) => {
             return (
               <tr key={index}>
-                <td> <Link to={{
-                pathname: `/view/${application.Id}`,
-                state: { applications: application }
-              }} className='btn btn-link' style={{textDecoration:'none'}}>{application.Id}</Link></td>
+                <td>
+                  {" "}
+                  <Link
+                    to={{
+                      pathname: `/view/${application.Id}`,
+                      state: { applications: application },
+                    }}
+                    className="btn btn-link"
+                    style={{ textDecoration: "none" }}
+                  >
+                    {application.Id}
+                  </Link>
+                </td>
                 <td> {application.Name}</td>
                 <td> {application.CompanyName}</td>
                 <td> {application.Href}</td>
