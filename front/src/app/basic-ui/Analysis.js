@@ -5,14 +5,14 @@ const Analysis = () => {
   return (
     <div>
       <div className="page-header">
-          <h3 className="page-title">
-            <span className="page-title-icon bg-gradient-primary text-white mr-2">
-              <i className="mdi mdi-file-find " style={{ color: "black" }}></i>
-            </span>{" "}
-            Analysis{" "}
-          </h3>
-          <br/>
-          </div>
+        <h3 className="page-title">
+          <span className="page-title-icon bg-gradient-primary text-white mr-2">
+            <i className="mdi mdi-file-find " style={{ color: "black" }}></i>
+          </span>{" "}
+          Analysis{" "}
+        </h3>
+        <br />
+      </div>
       <div className="row">
         <div className="col-md-4 stretch-card grid-margin">
           <div
