@@ -7,8 +7,7 @@ router = routers.DefaultRouter()
 router.register(r'basespace', views.BSListView)
 router.register(r'project', views.ProjectView)
 router.register(r'biosample', views.BiosampleView)
-
-
+router.register(r'analysis', views.AnalysisView)
 urlpatterns = [
     path('', include(router.urls)),
     path('applications/',views.get_application),

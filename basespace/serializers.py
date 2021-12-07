@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Basespace,Project,Biosample
+from .models import Basespace,Project,Biosample,AnalysisStatus
 
 class BaseSpaceSerializer(serializers.ModelSerializer):
     class Meta:
@@ -16,4 +16,12 @@ class ProjectSerializer(serializers.ModelSerializer):
 class BiosampleSerializer(serializers.ModelSerializer):
     class Meta:
         model=Biosample
+        fields='__all__'
+        
+        
+        
+        
+class AnalysisSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=AnalysisStatus
         fields='__all__'

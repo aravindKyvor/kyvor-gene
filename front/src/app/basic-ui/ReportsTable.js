@@ -57,6 +57,7 @@ export default function MaterialTableDemo() {
           <Link
             to={{ pathname: `/basic-ui/Annovar` }}
             target="_self"
+            className="btn btn-link"
             style={{ textDecoration: "none" }}
           >
             {rowData.name}

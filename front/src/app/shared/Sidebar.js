@@ -39,16 +39,12 @@ class Sidebar extends Component {
     const dropdownPaths = [
       { path: "/apps", state: "appsMenuOpen" },
       { path: "/basic-ui", state: "basicUiMenuOpen" },
-      { path: "/advanced-ui", state: "advancedUiMenuOpen" },
+     
       { path: "/form-elements", state: "formElementsMenuOpen" },
-      { path: "/tables", state: "tablesMenuOpen" },
-      { path: "/maps", state: "mapsMenuOpen" },
-      { path: "/icons", state: "iconsMenuOpen" },
-      { path: "/charts", state: "chartsMenuOpen" },
+
       { path: "/user-pages", state: "userPagesMenuOpen" },
       { path: "/error-pages", state: "errorPagesMenuOpen" },
-      { path: "/general-pages", state: "generalPagesMenuOpen" },
-      { path: "/ecommerce", state: "ecommercePagesMenuOpen" },
+     
     ];
 
     dropdownPaths.forEach((obj) => {
@@ -64,10 +60,10 @@ class Sidebar extends Component {
         <ul className="nav">
           <li
             className={
-              this.isPathActive("/dashboard") ? "nav-item active" : "nav-item"
+              this.isPathActive("/") ? "nav-item active" : "nav-item"
             }
           >
-            <Link className="nav-link" to="/dashboard">
+            <Link className="nav-link" to="/">
               <span className="menu-title">
                 <Trans>Dashboard</Trans>
               </span>

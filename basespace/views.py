@@ -3,9 +3,9 @@ from django.shortcuts import render
 import requests
 from .forms import ApplicationForm
 import json
-from .serializers import BaseSpaceSerializer,ProjectSerializer,BiosampleSerializer
+from .serializers import BaseSpaceSerializer,ProjectSerializer,BiosampleSerializer,AnalysisSerializer
 from rest_framework import viewsets
-from .models import Basespace,Project,Biosample
+from .models import Basespace,Project,Biosample,AnalysisStatus
 from .pipeline.basespace import usercreds
 from rest_framework.decorators import api_view
 
@@ -24,6 +24,11 @@ class ProjectView(viewsets.ModelViewSet):
 class BiosampleView(viewsets.ModelViewSet):
     queryset = Biosample.objects.all().order_by('id')
     serializer_class = BiosampleSerializer
+    
+    
+class AnalysisView(viewsets.ModelViewSet):
+    queryset = AnalysisStatus.objects.all().order_by('id')
+    serializer_class = AnalysisSerializer
     
     
 @api_view(['GET'])

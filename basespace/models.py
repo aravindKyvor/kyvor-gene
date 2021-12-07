@@ -96,3 +96,15 @@ class Biosample(models.Model):
 
     def __str__(self):
         return "ID: %s, BiosampleName: %s" % (self.project_id, self.biosample_name)
+    
+    
+    
+class AnalysisStatus(models.Model):
+    analysis_type = models.CharField(max_length=120, blank=False, null=False)
+    analysis_ref_id = models.CharField(max_length=20, blank=False, null=False)
+    analysis_status = models.CharField(max_length=120, blank=False, null=False)
+    analysis_description = models.TextField(blank=True, null=True)
+    analysis_timestamp = models.DateTimeField(auto_now_add=True)
+    bs_analysis_id = models.CharField(max_length=120, blank=True, null=True)
+    bs_analysis_status = models.CharField(max_length=120, blank=True, null=True)
+    bs_analysis_name = models.CharField(max_length=120, blank=True, null=True)

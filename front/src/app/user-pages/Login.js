@@ -39,10 +39,13 @@ const Login = ({ login, isAuthenticated }) => {
 
   return (
     <div>
+      <div>
       <div className="d-flex align-items-center auth px-0">
+        
         <div className="row w-100 mx-0">
           <div className="col-lg-6 mx-auto">
-            <div className="auth-form-light text-left py-5 px-4 px-sm-5">
+            <div className="auth-form-light text-center py-5 px-4 px-sm-5"> 
+            
               <div className="brand-logo">
                 <img
                   src="https://media-exp1.licdn.com/dms/image/C510BAQFzmTl0wDAz9A/company-logo_200_200/0/1571652632244?e=2159024400&v=beta&t=eaKo0GEOitZiwddxEj0nHviaJUkB3IuudN4hfCTp4fE"
@@ -56,7 +59,8 @@ const Login = ({ login, isAuthenticated }) => {
               </div>
               <h4>Hello, welcome to Kyvor </h4>
               <h6 className="font-weight-light">Sign in to continue.</h6>
-              <Form onSubmit={(e) => onSubmit(e)}>
+              <br/>
+              {/* <Form onSubmit={(e) => onSubmit(e)}>
                 <Form.Group className="d-flex search-field">
                   <Form.Control
                     type="email"
@@ -95,14 +99,15 @@ const Login = ({ login, isAuthenticated }) => {
                 <div className="line-separator"></div>
                 <div className="or-label">or</div>
                 <div className="line-separator"></div>
-              </div>
+              </div> */}
               <div className="mb-2">
                 <button
                   type="button"
                   className="btn btn-lg btn-social-icon-text btn-google btn-block"
+                  style={{backgroundColor:'#fec107'}}
                   onClick={continueWithGoogle}
                 >
-                  <i className="mdi mdi-google-plus"></i>Google
+                  <i className="mdi mdi-google-plus"   style={{backgroundColor:'#fec107'}} ></i>Google
                 </button>
                 {/* <button type="button" className="btn btn-lg btn-google btn-block text-uppercase btn-outline" onClick={continueWithGoogle}>
                      <img src="https://img.icons8.com/color/16/000000/google-logo.png"/> Signup Using Google
@@ -112,6 +117,8 @@ const Login = ({ login, isAuthenticated }) => {
           </div>
         </div>
       </div>
+      </div>
+    
     </div>
   );
 };
