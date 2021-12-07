@@ -19,6 +19,7 @@ import UpdateProject from "../basespace/projects/UpdateProject";
 import ApplicationList from "../basespace/applications/Applicationlist";
 import ApplicationDetail from "../basespace/applications/ApplicationDetail";
 import WhoAmI from "../basespace/users/WhoAmI";
+import Credits from '../basespace/credits/Credits'
 const Analysis = lazy(() => import("./basic-ui/Analysis"));
 const PrivateRoutes = lazy(() => import("../PrivateRoutes"));
 const Google = lazy(() => import("./user-pages/Google"));
@@ -131,6 +132,11 @@ class AppPrivateRoutess extends Component {
             exact
             path="/tables/basic-table"
             component={BasicTable}
+          />
+           <PrivateRoutes
+            exact
+            path="/basespace/credits"
+            component={Credits}
           />
           <PrivateRoutes exact path="/icons/mdi" component={Mdi} />
           <PrivateRoutes exact path="/charts/chart-js" component={ChartJs} />

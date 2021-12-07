@@ -56,3 +56,19 @@ def get_user(request):
     if req_status == 200 or req_status == 201:
         
         return JsonResponse(req.json())
+
+
+
+@api_view(['GET'])
+def get_credits(request):
+    basespace_credentials = usercreds()
+    request_url = "https://api.basespace.illumina.com/v2/users/current/subscription/"
+
+    req = requests.get(request_url, headers=basespace_credentials["headers"])
+    req_status = req.status_code
+    
+    
+
+    if req_status == 200 or req_status == 201:
+        
+        return JsonResponse(req.json())
