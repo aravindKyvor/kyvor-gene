@@ -71,7 +71,7 @@ export class Add extends Component {
       project_created_on: "",
       bs_user_id: "",
     });
-    this.props.history.push("/basespace/biosample");
+    this.props.history.push("/basespace/projects/list");
   };
 
   render() {

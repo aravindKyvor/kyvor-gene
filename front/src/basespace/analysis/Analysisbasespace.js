@@ -19,56 +19,115 @@ const WhoAmI = () => {
     setApplications(new_data);
   };
   return (
-    <div>
-      <Form>
-        <div className="row justify-content-center">
-          <div className="col-7 justify-content-center">
+ 
+   
+      <div>
+        <div className="page-header">
+          <h3 className="page-title">Analysis Lists </h3>
+        </div>
+
+        <div className="row">
+          <div className="col-12 grid-margin">
             <div className="card">
               <div className="card-body">
-                <h4 className="card-header d-flex justify-content-between align-items-center">
-                  Analysis
-                  <Link
-                    to="/basic-ui/Basespace"
-                    style={{ textDecoration: "none" }}
-                  >
-                    <button
-                      type="button"
-                      className="btn btn-sm"
-                      style={{ backgroundColor: "#fec107" }}
-                    >
-                      Back{" "}
-                    </button>
-                  </Link>
+              <h4 className="card-header d-flex justify-content-between align-items-center">Analysis list
+                
+                <Link to='/basespace/projects/addproject' style={{textDecoration:'none'}}><button type="button" className="btn btn-sm" style={{backgroundColor:'#fec107'}}>Add </button></Link>
+                
                 </h4>
+
+              
+                <hr />
 
                 <div className="table-responsive">
                   <table className="table table-bordered  table-hover">
-                    {applications.map((analysis)=>{
-                      return(
-
-                      
-                      <tbody>
-                      <tr key={analysis.id}>
-                        <th>analysis_type</th>
-                        <td>{analysis.analysis_type}</td>
+                    <thead>
+                      <tr>
+                        <th>
+                          <strong> analysis_type</strong>
+                        </th>
+                        <th>
+                          {" "}
+                          <strong> analysis_ref_id</strong>{" "}
+                        </th>
+                        <th>
+                          {" "}
+                          <strong>  analysis_status</strong>{" "}
+                        </th>
+                        <th>
+                          {" "}
+                          <strong> analysis_description</strong>{" "}
+                        </th>
+                        <th>
+                          <strong>  analysis_timestamp</strong>{" "}
+                        </th>
+                        <th>
+                          {" "}
+                          <strong> bs_analysis_id</strong>{" "}
+                        </th>
+                        <th>
+                          {" "}
+                          <strong> bs_analysis_status</strong>{" "}
+                        </th>
+                        <th>
+                          {" "}
+                          <strong> bs_analysis_name</strong>{" "}
+                        </th>
                       </tr>
-                      {/* <tr>
-                        <th>ICreditUsage</th>
-                        <td>{applications.ICreditUsage}</td>
-                      </tr> */}
+                    </thead>
+                    <tbody>
+
+                    {applications.map((analysis) => {
+                      return (
+
+                        <tr key={analysis.id}>
+                        <td>{analysis.analysis_type}</td>
+                        <td>{analysis.analysis_ref_id}</td>
+                        <td>{analysis.analysis_status}</td>
+                        <td>{analysis.analysis_description}</td>
+                        <td>{analysis.analysis_timestamp}</td>
+                        <td>{analysis.bs_analysis_id}</td>
+                        <td>{analysis.bs_analysis_status}</td>
+                        <td>{analysis.bs_analysis_name}</td>
+                        </tr>
+                                  )
+
+                      })}
+                      
+                        
+
                     </tbody>
-                      )
-                    })}
-                    
                   </table>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </Form>
-    </div>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   );
 };
 
 export default WhoAmI;
+

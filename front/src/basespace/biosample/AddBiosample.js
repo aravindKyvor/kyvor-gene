@@ -71,6 +71,7 @@ export class AddBiosample extends Component {
       biosample_created_on: "",
       project_id: "",
     });
+    this.props.history.push("/basespace/biosample");
   };
 
   render() {

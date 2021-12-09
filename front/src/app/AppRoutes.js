@@ -1,6 +1,6 @@
 import React, { Component, Suspense, lazy } from "react";
+import { Switch, Route, Redirect } from 'react-router-dom';
 
-import { Switch, Route } from "react-router-dom";
 import Projectform from "./Projectform";
 import ReportsTable from "./basic-ui/ReportsTable";
 import Spinner from "../app/shared/Spinner";
@@ -21,7 +21,9 @@ import ApplicationDetail from "../basespace/applications/ApplicationDetail";
 import WhoAmI from "../basespace/users/WhoAmI";
 import Credits from "../basespace/credits/Credits";
 import Analysisbasespace from "../basespace/analysis/Analysisbasespace";
+//import BiosampleDetail from '../basespace/biosample/Detail'
 const Analysis = lazy(() => import("./basic-ui/Analysis"));
+
 const PrivateRoutes = lazy(() => import("../PrivateRoutes"));
 const Google = lazy(() => import("./user-pages/Google"));
 const Login = lazy(() => import("./user-pages/Login"));
@@ -81,6 +83,7 @@ class AppPrivateRoutess extends Component {
             component={AddBiosample}
           />
           <PrivateRoutes exact path="/update/:id" component={Update} />
+          {/* <PrivateRoutes exact path="/:id/" component={BiosampleDetail} /> */}
 
           {/* projects folder */}
           <PrivateRoutes
@@ -152,7 +155,7 @@ class AppPrivateRoutess extends Component {
             component={Error500}
           />
           <PrivateRoutes path="/profile" component={Profile} />
-         
+          <Redirect to="/" />
         </Switch>
       </Suspense>
     );

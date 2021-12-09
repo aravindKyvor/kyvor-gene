@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Basespace,Project,Biosample,Applications
+from .models import Basespace,Project,Biosample,AnalysisStatus
 admin.site.register(Basespace)
 
 admin.site.register(Project)
@@ -8,7 +8,9 @@ admin.site.register(Project)
 admin.site.register(Biosample)
 
 
-admin.site.register(Applications)
+admin.site.register(AnalysisStatus)
+
+
 
 #Client ID = 54db1f602f6e4606b7268cd8086cfac1
 

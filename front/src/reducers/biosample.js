@@ -1,6 +1,6 @@
 import {
 
-   POST_BIOSAMPLE,POST_BIOSAMPLE_ERROR
+   POST_BIOSAMPLE,POST_BIOSAMPLE_ERROR,EDIT_BIOAMPLE
   
   } from "../actions/types";
   
@@ -22,7 +22,8 @@ import {
                 projects:[],
                 error:action.payload
             }
-     
+
+      
       default:
         return state;
     }

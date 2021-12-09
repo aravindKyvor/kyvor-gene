@@ -37,8 +37,8 @@ class ProjectList extends React.Component {
   }
 
   render() {
-    const BiosampleData = this.state.data;
-    const rows = BiosampleData.map((item) => (
+    const ProjectData = this.state.data;
+    const rows = ProjectData.map((item) => (
       <tr key={item.id}>
         <td>{item.project_name}</td>
         <td>{item.bs_default_project}</td>
