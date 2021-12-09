@@ -2,8 +2,8 @@ from basespace.models import Basespace
 
 def usercreds():
     
-    bs_recent_login = Basespace.objects.latest('id')
-    pk_of_recent_login = bs_recent_login.id
+    bs_recent_login = Basespace.objects.latest('bs_user_id')
+    pk_of_recent_login = bs_recent_login.bs_user_id
     current_access_token = bs_recent_login.bs_access_token
     current_bs_email = bs_recent_login.bs_email
     bearer_auth = "Bearer " + str(current_access_token)

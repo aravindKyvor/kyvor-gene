@@ -7,7 +7,7 @@ import { POST_BASESPACE, POST_BIOSAMPLE,ADD_ANALYSIS} from "./types";
 export const addBasespace = (project) => (dispatch, getState) => {
   axios
     .post(
-      `${process.env.REACT_APP_API_URL}/api/project/`,
+      `${process.env.REACT_APP_API_URL}/api/projects/`,
       project,
       tokenHeader(getState)
     )

@@ -8,16 +8,12 @@ from rest_framework import viewsets
 from .models import Basespace,Project,Biosample,AnalysisStatus
 from .pipeline.basespace import usercreds
 from rest_framework.decorators import api_view
+from .utils import *
 
 class BSListView(viewsets.ModelViewSet):
-    queryset = Basespace.objects.all().order_by('id')
+    queryset = Basespace.objects.all().order_by('bs_user_id')
     serializer_class = BaseSpaceSerializer
     
-    
-    
-class ProjectView(viewsets.ModelViewSet):
-    queryset = Project.objects.all().order_by('id')
-    serializer_class = ProjectSerializer
     
     
     
@@ -77,3 +73,32 @@ def get_credits(request):
     if req_status == 200 or req_status == 201:
         
         return JsonResponse(req.json())
+
+
+
+
+
+
+
+@api_view(['GET', 'POST'])
+def getProjects(request):
+
+    if request.method == 'GET':
+        print(getProjectsList)
+        return getProjectsList(request)
+
+    if request.method == 'POST':
+        return createProject(request)
+
+
+@api_view(['GET', 'PUT', 'DELETE'])
+def getProject(request, pk):
+
+    if request.method == 'GET':
+        return getProjectDetail(request, pk)
+
+    if request.method == 'PUT':
+        return updateProject(request, pk)
+
+    if request.method == 'DELETE':
+        return deleteProject(request, pk)

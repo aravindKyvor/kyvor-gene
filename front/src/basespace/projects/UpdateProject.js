@@ -205,7 +205,7 @@ const UpdateProject = () => {
                     name="bs_user_id"
                   />
                 </div>
-
+                <div className="col text-center">
                 <button
                   onClick={updateMenu}
                   className="btn"
@@ -222,6 +222,7 @@ const UpdateProject = () => {
                     Back
                   </button>
                 </Link>
+                </div>
               </div>
             )}
           </div>

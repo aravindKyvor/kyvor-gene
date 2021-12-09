@@ -24,7 +24,7 @@ export class Add extends Component {
     bs_project_id: "",
     project_type: "",
     project_created_on: "",
-    bs_user_id: "",
+   
   };
   static propTypes = {
     addBasespace: PropTypes.func.isRequired,
@@ -47,7 +47,7 @@ export class Add extends Component {
       bs_project_id,
       project_type,
       project_created_on,
-      bs_user_id,
+    
     } = this.state;
     const basespace = {
       project_name,
@@ -55,7 +55,7 @@ export class Add extends Component {
       bs_project_id,
       project_type,
       project_created_on,
-      bs_user_id,
+     
     };
     const errors = validate(project_name);
     if (errors.length > 0) {
@@ -69,7 +69,7 @@ export class Add extends Component {
       bs_project_id: "",
       project_type: "",
       project_created_on: "",
-      bs_user_id: "",
+     
     });
     this.props.history.push("/basespace/projects/list");
   };
@@ -82,7 +82,7 @@ export class Add extends Component {
       bs_project_id,
       project_type,
       project_created_on,
-      bs_user_id,
+      
     } = this.state;
     return (
       <div>
@@ -174,19 +174,7 @@ export class Add extends Component {
                     required
                   />
                 </Form.Group>
-                <Form.Group>
-                  <label id="inputGroupFile04">Basespace User Id</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="inputGroupFile04"
-                    value={bs_user_id}
-                    placeholder='Basespace User Id'
-                    name="bs_user_id"
-                    onChange={this.onChange}
-                    required
-                  />
-                </Form.Group>
+                
 
                 <div className="col text-center">
                   <button

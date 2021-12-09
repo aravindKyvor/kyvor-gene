@@ -46,7 +46,12 @@ class AppPrivateRoutess extends Component {
     return (
       <Suspense fallback={<Spinner />}>
         <Switch>
+          {/* Dashboard Starts  */}
+
           <PrivateRoutes exact path="/" component={Dashboard} />
+          {/* Dashboard Ends */}
+         
+          {/* Basic ui Starts */}
           <PrivateRoutes exact path="/basic-ui/Analysis" component={Analysis} />
           <PrivateRoutes
             exact
@@ -70,6 +75,15 @@ class AppPrivateRoutess extends Component {
             component={Basespace}
           />
           <PrivateRoutes exact path="/basic-ui/Reports1" component={Reports1} />
+
+          <PrivateRoutes path="/basic-ui/Annovar" component={Annovar} />
+
+          {/* Basic ui Ends */}
+
+          {/* Shared Section Starts */}
+          {/* Shared Section Ends */}
+         
+          {/* Basespace Biosample Section */}
           <PrivateRoutes
             exact
             path="/basespace/biosample"
@@ -82,7 +96,9 @@ class AppPrivateRoutess extends Component {
           />
           <PrivateRoutes exact path="/update/:id" component={Update} />
 
-          {/* projects folder */}
+          {/* BaseSpace BioSample Ends */}
+
+          {/*  BaseSpace Project Section */}
           <PrivateRoutes
             exact
             path="/basespace/projects/list"
@@ -93,11 +109,7 @@ class AppPrivateRoutess extends Component {
             path="/basespace/projects/addproject"
             component={Addproject}
           />
-          <PrivateRoutes
-            exact
-            path="/basespace/users/whoami"
-            component={WhoAmI}
-          />
+
           <PrivateRoutes
             exact
             path="/project/update/:id"
@@ -106,7 +118,7 @@ class AppPrivateRoutess extends Component {
 
           {/* Project Ends */}
 
-          {/* Aanalysis secion */}
+          {/* Analysis secion */}
 
           <PrivateRoutes
             exact
@@ -126,14 +138,25 @@ class AppPrivateRoutess extends Component {
           />
 
           {/* Analysis End */}
+
+          {/* Basespace Application Section */}
+
           <PrivateRoutes
             exact
             path="/basespace/applicationlist"
             component={ApplicationList}
           />
           <PrivateRoutes exact path="/view/:id" component={ApplicationDetail} />
+          {/* Basespace Application Ends */}
 
-          <PrivateRoutes path="/basic-ui/Annovar" component={Annovar} />
+          {/* Basespace User Section */}
+          <PrivateRoutes
+            exact
+            path="/basespace/users/whoami"
+            component={WhoAmI}
+          />
+          {/* Basespace User Ends */}
+        
           <PrivateRoutes
             exact
             path="/form-Elements/basic-elements"
