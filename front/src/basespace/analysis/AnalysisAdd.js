@@ -169,7 +169,7 @@ export class AnalysisAdd extends Component {
                 <Form.Group>
                   <label id="inputGroupFile03">Analysis Timestamp</label>
                   <input
-                    type="text"
+                    type="date"
                     className="form-control"
                     id="inputGroupFile03"
                     placeholder='Analysis Timestamp'
@@ -182,7 +182,7 @@ export class AnalysisAdd extends Component {
                 <Form.Group>
                   <label id="inputGroupFile04">Bs Analysis Id</label>
                   <input
-                    type="date"
+                    type="text"
                     placeholder='Bs Analysis Id'
                     className="form-control"
                     id="inputGroupFile04"
