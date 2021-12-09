@@ -219,6 +219,9 @@ export const Update = () => {
                   <button onClick={updateMenu} className="btn" style={{backgroundColor:'#fec107'}}> 
                     Update
                   </button>
+                  <Link to='/basespace/biosample'><button className="btn" style={{backgroundColor:"#fec107"}}>
+                    Back
+                  </button></Link>
                 </div>
               )}
             </div>

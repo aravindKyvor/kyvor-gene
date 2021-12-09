@@ -240,6 +240,9 @@ const UpdateAnalysis = () => {
                 <button onClick={updateMenu} className="btn" style={{backgroundColor:'#fec107'}}> 
                   Update
                 </button>
+                <Link to='/basespace/analysis'><button className="btn" style={{backgroundColor:"#fec107"}}>
+                  Back
+                </button></Link>
               </div>
             )}
           </div>

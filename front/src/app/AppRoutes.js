@@ -1,5 +1,5 @@
 import React, { Component, Suspense, lazy } from "react";
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Route, Redirect } from "react-router-dom";
 
 import Projectform from "./Projectform";
 import ReportsTable from "./basic-ui/ReportsTable";
@@ -38,11 +38,8 @@ const BasicTable = lazy(() => import("./tables/BasicTable"));
 
 const Mdi = lazy(() => import("./icons/Mdi"));
 
-
 const Error404 = lazy(() => import("./error-pages/Error404"));
 const Error500 = lazy(() => import("./error-pages/Error500"));
-
-;
 
 class AppPrivateRoutess extends Component {
   render() {
@@ -84,7 +81,7 @@ class AppPrivateRoutess extends Component {
             component={AddBiosample}
           />
           <PrivateRoutes exact path="/update/:id" component={Update} />
-        
+
           {/* projects folder */}
           <PrivateRoutes
             exact
@@ -109,22 +106,26 @@ class AppPrivateRoutess extends Component {
 
           {/* Project Ends */}
 
-             {/* Aanalysis secion */}
+          {/* Aanalysis secion */}
 
-             <PrivateRoutes exact path="/basespace/projects/analysis/add" component={AnalysisAdd} />
+          <PrivateRoutes
+            exact
+            path="/basespace/projects/analysis/add"
+            component={AnalysisAdd}
+          />
 
-             <PrivateRoutes
+          <PrivateRoutes
             exact
             path="/basespace/analysis"
             component={AnalysisList}
           />
-           <PrivateRoutes
+          <PrivateRoutes
             exact
             path="/analysis/update/:id"
             component={UpdateAnalysis}
           />
 
-              {/* Analysis End */}
+          {/* Analysis End */}
           <PrivateRoutes
             exact
             path="/basespace/applicationlist"
@@ -154,7 +155,7 @@ class AppPrivateRoutess extends Component {
             component={BasicTable}
           />
           <PrivateRoutes exact path="/basespace/credits" component={Credits} />
-         
+
           <PrivateRoutes exact path="/icons/mdi" component={Mdi} />
           <Route exact path="/user-pages/login-1" component={Login} />
           <Route exact path="/google" component={Google} />
@@ -168,8 +169,6 @@ class AppPrivateRoutess extends Component {
             component={Error500}
           />
 
-
-       
           <PrivateRoutes path="/profile" component={Profile} />
           <Redirect to="/" />
         </Switch>

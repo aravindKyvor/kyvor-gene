@@ -213,7 +213,15 @@ const UpdateProject = () => {
                 >
                   Update
                 </button>
-                
+                <Link to="/basespace/projects/list">
+                  {" "}
+                  <button
+                    className="btn"
+                    style={{ backgroundColor: "#fec107" }}
+                  >
+                    Back
+                  </button>
+                </Link>
               </div>
             )}
           </div>

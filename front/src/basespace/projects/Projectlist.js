@@ -108,7 +108,7 @@ class ProjectList extends React.Component {
 
                 <div className="table-responsive">
                   <table className="table table-bordered  table-hover">
-                    <thead>
+                    <thead style={{ backgroundColor: "#fec107" }}>
                       <tr>
                         <th>
                           <strong> Project Name</strong>

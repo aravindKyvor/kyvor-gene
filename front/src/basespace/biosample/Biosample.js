@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Button from "@material-ui/core/Button";
-import AddIcon from '@material-ui/icons/Add';
-import DeleteIcon from '@material-ui/icons/Delete';
-import EditIcon from '@material-ui/icons/Edit';
+import AddIcon from "@material-ui/icons/Add";
+import DeleteIcon from "@material-ui/icons/Delete";
+import EditIcon from "@material-ui/icons/Edit";
 class Biosample extends React.Component {
   constructor() {
     super();
@@ -51,16 +51,12 @@ class Biosample extends React.Component {
         <td>{item.biosample_created_on}</td>
 
         <td>
-          <Link to={"/update/" + item.id} >
-           <EditIcon/>
+          <Link to={"/update/" + item.id}>
+            <EditIcon />
           </Link>
-          </td>
-          <td>
-          <DeleteIcon
-            onClick={() => this.deleteData(item.id)}
-           
-          />
-           
+        </td>
+        <td>
+          <DeleteIcon onClick={() => this.deleteData(item.id)} />
         </td>
       </tr>
     ));
@@ -76,13 +72,14 @@ class Biosample extends React.Component {
               <div className="card-body">
                 <h4 className="card-header d-flex justify-content-between align-items-center">
                   BioSample Lists
-                  <Link to="/basespace/addbiosample" style={{textDecoration:'none'}}>
+                  <Link
+                    to="/basespace/addbiosample"
+                    style={{ textDecoration: "none" }}
+                  >
                     <Button
-                     variant="outlined"
-                     color="secondary"
-                     startIcon={<AddIcon />}
-                     
-                     
+                      variant="outlined"
+                      color="secondary"
+                      startIcon={<AddIcon />}
                     >
                       Add Biosample
                     </Button>
@@ -93,7 +90,7 @@ class Biosample extends React.Component {
 
                 <div className="table-responsive">
                   <table className="table table-bordered  table-hover">
-                    <thead>
+                    <thead style={{ backgroundColor: "#fec107" }}>
                       <tr>
                         <th>
                           <strong> BioSampleId</strong>
@@ -117,7 +114,7 @@ class Biosample extends React.Component {
                           {" "}
                           <strong> Created On</strong>{" "}
                         </th>
-                        <th colSpan='2'>
+                        <th colSpan="2">
                           {" "}
                           <strong>Actions</strong>{" "}
                         </th>
