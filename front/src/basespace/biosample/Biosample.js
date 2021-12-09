@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import Button from "@material-ui/core/Button";
+import AddIcon from '@material-ui/icons/Add';
 class Biosample extends React.Component {
   constructor() {
     super();
@@ -72,14 +73,16 @@ class Biosample extends React.Component {
               <div className="card-body">
                 <h4 className="card-header d-flex justify-content-between align-items-center">
                   BioSample Lists
-                  <Link to="/basespace/addbiosample">
-                    <button
-                      type="button"
-                      className="btn btn-sm"
-                      style={{ backgroundColor: "#fec107" }}
+                  <Link to="/basespace/addbiosample" style={{textDecoration:'none'}}>
+                    <Button
+                     variant="outlined"
+                     color="secondary"
+                     startIcon={<AddIcon />}
+                     
+                     
                     >
                       Add Biosample
-                    </button>
+                    </Button>
                   </Link>
                 </h4>
 

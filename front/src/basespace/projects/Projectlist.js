@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import Button from "@material-ui/core/Button";
+import AddIcon from '@material-ui/icons/Add';
 class ProjectList extends React.Component {
   constructor() {
     super();
@@ -72,7 +73,20 @@ class ProjectList extends React.Component {
               <div className="card-body">
               <h4 className="card-header d-flex justify-content-between align-items-center">Project Lists
                 
-                <Link to='/basespace/projects/addproject' style={{textDecoration:'none'}}><button type="button" className="btn btn-sm" style={{backgroundColor:'#fec107'}}>Add Project </button></Link>
+                <Link to='/basespace/projects/addproject' style={{textDecoration:'none'}}>
+                  
+                <Button
+                     variant="outlined"
+                     color="secondary"
+                     startIcon={<AddIcon />}
+                     
+                     
+                    >
+                      Add Project
+                    </Button>
+                  
+                  
+                  </Link>
                 
                 </h4>
 
