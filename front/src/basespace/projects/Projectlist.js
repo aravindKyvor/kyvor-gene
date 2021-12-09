@@ -2,6 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Button from "@material-ui/core/Button";
 import AddIcon from '@material-ui/icons/Add';
+import DeleteIcon from '@material-ui/icons/Delete';
+import EditIcon from '@material-ui/icons/Edit';
 class ProjectList extends React.Component {
   constructor() {
     super();
@@ -49,15 +51,17 @@ class ProjectList extends React.Component {
         <td>{item.bs_user_id}</td>
 
         <td>
-          <Link to={"/project/update/" + item.id} className="btn btn-info mr-2">
-            Update
+          <Link to={"/project/update/" + item.id} >
+         <EditIcon/>
           </Link>
-          <button
+
+          </td>
+          <td>
+          <DeleteIcon
             onClick={() => this.deleteData(item.id)}
-            className="btn btn-danger"
-          >
-            Delete
-          </button>
+           
+          />
+         
         </td>
       </tr>
     ));
@@ -127,6 +131,10 @@ class ProjectList extends React.Component {
                         <th>
                           {" "}
                           <strong> Bs User Id</strong>{" "}
+                        </th>
+                        <th colSpan='2'>
+                          {" "}
+                          <strong>Actions</strong>{" "}
                         </th>
                       </tr>
                     </thead>

@@ -1,8 +1,8 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import { baseURL, headers } from "./Headerssample";
-import { Link } from "react-router-dom";
+import { useParams ,Link} from "react-router-dom";
+import { baseURL, headers } from "../Headerssample";
+
 export const Update = () => {
   const initialMenuState = {
     id: null,
@@ -126,7 +126,7 @@ export const Update = () => {
               ) : (
                 <div>
                   <div className="form-group">
-                    <label htmlFor="name">biosample_id</label>
+                    <label htmlFor="name">Biosample Id</label>
                     <input
                       type="text"
                       className="form-control"
@@ -139,7 +139,7 @@ export const Update = () => {
                   </div>
 
                   <div className="form-group">
-                    <label htmlFor="name">biosample_type</label>
+                    <label htmlFor="name">Biosample Type</label>
                     <input
                       type="text"
                       className="form-control"
@@ -152,7 +152,7 @@ export const Update = () => {
                   </div>
 
                   <div className="form-group">
-                    <label htmlFor="name">biosample_name</label>
+                    <label htmlFor="name">Biosample Name</label>
                     <input
                       type="text"
                       className="form-control"
@@ -165,7 +165,7 @@ export const Update = () => {
                   </div>
 
                   <div className="form-group">
-                    <label htmlFor="name">biosample_path</label>
+                    <label htmlFor="name">Biosample Path</label>
                     <input
                       type="text"
                       className="form-control"
@@ -178,7 +178,7 @@ export const Update = () => {
                   </div>
 
                   <div className="form-group">
-                    <label htmlFor="name">biosample_created_on</label>
+                    <label htmlFor="name">Biosample Created On</label>
                     <input
                       type="date"
                       className="form-control"
@@ -191,7 +191,7 @@ export const Update = () => {
                   </div>
 
                   <div className="form-group">
-                    <label htmlFor="name">library_id</label>
+                    <label htmlFor="name">Library Id</label>
                     <input
                       type="text"
                       className="form-control"
@@ -204,7 +204,7 @@ export const Update = () => {
                   </div>
 
                   <div className="form-group">
-                    <label htmlFor="name">project_id</label>
+                    <label htmlFor="name">Project Id</label>
                     <input
                       type="text"
                       className="form-control"

@@ -127,7 +127,7 @@ export class Add extends Component {
                   <Form.Control
                     type="text"
                     id="exampleInputUsername1"
-                    placeholder="project Name"
+                    placeholder="Basespace Default Project"
                     size="lg"
                     value={bs_default_project}
                     name="bs_default_project"
@@ -142,6 +142,7 @@ export class Add extends Component {
                     className="form-control"
                     id="inputGroupFile01"
                     required
+                    placeholder='Basespace Project Id'
                     value={bs_project_id}
                     name="bs_project_id"
                     onChange={this.onChange}
@@ -152,6 +153,7 @@ export class Add extends Component {
                   <input
                     type="text"
                     className="form-control"
+                    placeholder='Project Type'
                     id="inputGroupFile02"
                     value={project_type}
                     name="project_type"
@@ -165,6 +167,7 @@ export class Add extends Component {
                     type="date"
                     className="form-control"
                     id="inputGroupFile03"
+                    placeholder='Project Created On'
                     value={project_created_on}
                     name="project_created_on"
                     onChange={this.onChange}
@@ -178,6 +181,7 @@ export class Add extends Component {
                     className="form-control"
                     id="inputGroupFile04"
                     value={bs_user_id}
+                    placeholder='Basespace User Id'
                     name="bs_user_id"
                     onChange={this.onChange}
                     required

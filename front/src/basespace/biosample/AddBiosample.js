@@ -113,7 +113,7 @@ export class AddBiosample extends Component {
                   <Form.Control
                     type="text"
                     id="exampleInputUsername1"
-                    placeholder="project Name"
+                    placeholder="BioSample Id"
                     size="lg"
                     value={biosample_id}
                     name="biosample_id"
@@ -126,7 +126,7 @@ export class AddBiosample extends Component {
                   <Form.Control
                     type="text"
                     id="exampleInputUsername1"
-                    placeholder="project Name"
+                    placeholder="BioSample Type"
                     size="lg"
                     value={biosample_type}
                     name="biosample_type"
@@ -140,6 +140,7 @@ export class AddBiosample extends Component {
                     type="text"
                     className="form-control"
                     id="inputGroupFile01"
+                    placeholder="BioSample Name"
                     value={biosample_name}
                     name="biosample_name"
                     onChange={this.onChange}
@@ -150,6 +151,7 @@ export class AddBiosample extends Component {
                   <input
                     type="text"
                     className="form-control"
+                    placeholder='BioSample Path'
                     id="inputGroupFile02"
                     value={biosample_path}
                     name="biosample_path"
@@ -163,6 +165,7 @@ export class AddBiosample extends Component {
                     type="text"
                     className="form-control"
                     id="inputGroupFile03"
+                    placeholder='Library Id'
                     value={library_id}
                     name="library_id"
                     onChange={this.onChange}
@@ -177,6 +180,7 @@ export class AddBiosample extends Component {
                     id="inputGroupFile04"
                     value={biosample_created_on}
                     name="biosample_created_on"
+                    placeholder='BioSample Created On'
                     onChange={this.onChange}
                     required
                   />
@@ -189,6 +193,7 @@ export class AddBiosample extends Component {
                     className="form-control"
                     id="inputGroupFile04"
                     value={project_id}
+                    placeholder='Project Id'
                     name="project_id"
                     onChange={this.onChange}
                     required

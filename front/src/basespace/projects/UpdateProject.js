@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import { baseURL, headers } from "../biosample/Headerssample";
+import { baseURL, headers } from "../Headerssample";
 
 const UpdateProject = () => {
   const initialMenuState = {
@@ -129,7 +129,7 @@ const UpdateProject = () => {
             ) : (
               <div>
                 <div className="form-group">
-                  <label htmlFor="name">project_name</label>
+                  <label htmlFor="name">Project Name</label>
                   <input
                     type="text"
                     className="form-control"
@@ -142,7 +142,7 @@ const UpdateProject = () => {
                 </div>
 
                 <div className="form-group">
-                  <label htmlFor="name">bs_default_project</label>
+                  <label htmlFor="name">Bs Default Project</label>
                   <input
                     type="text"
                     className="form-control"
@@ -155,7 +155,7 @@ const UpdateProject = () => {
                 </div>
 
                 <div className="form-group">
-                  <label htmlFor="name">bs_project_id</label>
+                  <label htmlFor="name">Bs Project Id</label>
                   <input
                     type="text"
                     className="form-control"
@@ -168,7 +168,7 @@ const UpdateProject = () => {
                 </div>
 
                 <div className="form-group">
-                  <label htmlFor="name">project_type</label>
+                  <label htmlFor="name">Project Type</label>
                   <input
                     type="text"
                     className="form-control"
@@ -181,7 +181,7 @@ const UpdateProject = () => {
                 </div>
 
                 <div className="form-group">
-                  <label htmlFor="name">project_created_on</label>
+                  <label htmlFor="name">Project Created On</label>
                   <input
                     type="date"
                     className="form-control"
@@ -194,7 +194,7 @@ const UpdateProject = () => {
                 </div>
 
                 <div className="form-group">
-                  <label htmlFor="name">bs_user_id</label>
+                  <label htmlFor="name">Bs User Id</label>
                   <input
                     type="text"
                     className="form-control"
@@ -213,6 +213,7 @@ const UpdateProject = () => {
                 >
                   Update
                 </button>
+                
               </div>
             )}
           </div>

@@ -1,6 +1,6 @@
 import {
 
-   POST_BIOSAMPLE,POST_BIOSAMPLE_ERROR,EDIT_BIOAMPLE
+   POST_BIOSAMPLE,POST_BIOSAMPLE_ERROR
   
   } from "../actions/types";
   

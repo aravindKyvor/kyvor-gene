@@ -20,8 +20,9 @@ import ApplicationList from "../basespace/applications/Applicationlist";
 import ApplicationDetail from "../basespace/applications/ApplicationDetail";
 import WhoAmI from "../basespace/users/WhoAmI";
 import Credits from "../basespace/credits/Credits";
-import Analysisbasespace from "../basespace/analysis/Analysisbasespace";
-//import BiosampleDetail from '../basespace/biosample/Detail'
+import UpdateAnalysis from "../basespace/analysis/UpdateAnalysis";
+import AnalysisList from "../basespace/analysis/AnalysisList";
+import AnalysisAdd from "../basespace/analysis/AnalysisAdd";
 const Analysis = lazy(() => import("./basic-ui/Analysis"));
 
 const PrivateRoutes = lazy(() => import("../PrivateRoutes"));
@@ -83,8 +84,7 @@ class AppPrivateRoutess extends Component {
             component={AddBiosample}
           />
           <PrivateRoutes exact path="/update/:id" component={Update} />
-          {/* <PrivateRoutes exact path="/:id/" component={BiosampleDetail} /> */}
-
+        
           {/* projects folder */}
           <PrivateRoutes
             exact
@@ -107,7 +107,24 @@ class AppPrivateRoutess extends Component {
             component={UpdateProject}
           />
 
-          {/*  */}
+          {/* Project Ends */}
+
+             {/* Aanalysis secion */}
+
+             <PrivateRoutes exact path="/basespace/projects/analysis/add" component={AnalysisAdd} />
+
+             <PrivateRoutes
+            exact
+            path="/basespace/analysis"
+            component={AnalysisList}
+          />
+           <PrivateRoutes
+            exact
+            path="/analysis/update/:id"
+            component={UpdateAnalysis}
+          />
+
+              {/* Analysis End */}
           <PrivateRoutes
             exact
             path="/basespace/applicationlist"
@@ -137,11 +154,7 @@ class AppPrivateRoutess extends Component {
             component={BasicTable}
           />
           <PrivateRoutes exact path="/basespace/credits" component={Credits} />
-          <PrivateRoutes
-            exact
-            path="/basespace/analysis"
-            component={Analysisbasespace}
-          />
+         
           <PrivateRoutes exact path="/icons/mdi" component={Mdi} />
           <Route exact path="/user-pages/login-1" component={Login} />
           <Route exact path="/google" component={Google} />
@@ -154,6 +167,9 @@ class AppPrivateRoutess extends Component {
             path="/error-pages/error-500"
             component={Error500}
           />
+
+
+       
           <PrivateRoutes path="/profile" component={Profile} />
           <Redirect to="/" />
         </Switch>

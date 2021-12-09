@@ -2,6 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Button from "@material-ui/core/Button";
 import AddIcon from '@material-ui/icons/Add';
+import DeleteIcon from '@material-ui/icons/Delete';
+import EditIcon from '@material-ui/icons/Edit';
 class Biosample extends React.Component {
   constructor() {
     super();
@@ -49,15 +51,16 @@ class Biosample extends React.Component {
         <td>{item.biosample_created_on}</td>
 
         <td>
-          <Link to={"/update/" + item.id} className="btn btn-info mr-2">
-            Update
+          <Link to={"/update/" + item.id} >
+           <EditIcon/>
           </Link>
-          <button
+          </td>
+          <td>
+          <DeleteIcon
             onClick={() => this.deleteData(item.id)}
-            className="btn btn-danger"
-          >
-            Delete
-          </button>
+           
+          />
+           
         </td>
       </tr>
     ));
@@ -113,6 +116,10 @@ class Biosample extends React.Component {
                         <th>
                           {" "}
                           <strong> Created On</strong>{" "}
+                        </th>
+                        <th colSpan='2'>
+                          {" "}
+                          <strong>Actions</strong>{" "}
                         </th>
                       </tr>
                     </thead>
