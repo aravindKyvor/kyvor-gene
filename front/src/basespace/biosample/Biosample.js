@@ -69,21 +69,20 @@ class Biosample extends React.Component {
         <div className="row">
           <div className="col-12 grid-margin">
             <div className="card">
-
-           
               <div className="card-body">
-              
-
-                <div class="text-center">
-                  <Link
-                    to="/basespace/addbiosample"
-                    className="btn btn-secondary text-dark"
-                    style={{ backgroundColor: "#fec107" }}
-                  >
-                    {" "}
-                    ADD DETAILS
+                <h4 className="card-header d-flex justify-content-between align-items-center">
+                  BioSample Lists
+                  <Link to="/basespace/addbiosample">
+                    <button
+                      type="button"
+                      className="btn btn-sm"
+                      style={{ backgroundColor: "#fec107" }}
+                    >
+                      Add Biosample
+                    </button>
                   </Link>
-                </div>
+                </h4>
+
                 <hr />
 
                 <div className="table-responsive">
