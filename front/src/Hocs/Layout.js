@@ -7,6 +7,7 @@ import Sidebar from "../app/shared/Sidebar";
 import SettingsPanel from "../app/shared/SettingsPanel";
 import Footer from "../app/shared/Footer";
 import AppRoutes from "../app/AppRoutes";
+
 const Layout = ({ checkAuthenticated, load_user }) => {
   useEffect(() => {
     checkAuthenticated();
@@ -21,10 +22,13 @@ const Layout = ({ checkAuthenticated, load_user }) => {
       <div className="container-fluid page-body-wrapper">
         {pathname !== "/user-pages/login-1" && <Sidebar />}
         <div className="main-panel">
+       
           <div className="content-wrapper">
+            
             <AppRoutes />
             <SettingsPanel />
           </div>
+          
           <Footer />
         </div>
       </div>

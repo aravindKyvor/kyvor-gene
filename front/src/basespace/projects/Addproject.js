@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component,Fragment } from "react";
 
 import { Form } from "react-bootstrap";
 import { Link, useHistory } from "react-router-dom";
@@ -8,12 +8,13 @@ import { addBasespace } from "../../actions/basespace";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
+
 function validate(project_name) {
   const errors = [];
 
   if (project_name === "") {
     errors.push("please enter you project Name");
-  }
+  } 
   return errors;
 }
 
@@ -63,6 +64,7 @@ export class Add extends Component {
       return;
     }
     this.props.addBasespace(basespace, errors);
+    
     this.setState({
       project_name: "",
       bs_default_project: "",
@@ -71,6 +73,7 @@ export class Add extends Component {
       project_created_on: "",
      
     });
+   
     this.props.history.push("/basespace/projects/list");
   };
 
@@ -86,6 +89,7 @@ export class Add extends Component {
     } = this.state;
     return (
       <div>
+        <Fragment>
         <div className="page-header">
           <h3 className="page-projectName"> Adding Project Form </h3>
           <nav aria-label="breadcrumb">
@@ -197,7 +201,9 @@ export class Add extends Component {
               </div>
             </div>
           </div>
+        
         </div>
+        </Fragment>
       </div>
     );
   }

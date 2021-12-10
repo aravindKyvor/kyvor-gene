@@ -23,6 +23,13 @@ import Credits from "../basespace/credits/Credits";
 import UpdateAnalysis from "../basespace/analysis/UpdateAnalysis";
 import AnalysisList from "../basespace/analysis/AnalysisList";
 import AnalysisAdd from "../basespace/analysis/AnalysisAdd";
+
+
+
+
+
+
+
 const Analysis = lazy(() => import("./basic-ui/Analysis"));
 
 const PrivateRoutes = lazy(() => import("../PrivateRoutes"));
@@ -45,6 +52,7 @@ class AppPrivateRoutess extends Component {
   render() {
     return (
       <Suspense fallback={<Spinner />}>
+       
         <Switch>
           {/* Dashboard Starts  */}
 
@@ -195,6 +203,7 @@ class AppPrivateRoutess extends Component {
           <PrivateRoutes path="/profile" component={Profile} />
           <Redirect to="/" />
         </Switch>
+       
       </Suspense>
     );
   }
