@@ -4,7 +4,7 @@ import requests
 from .forms import ApplicationForm
 import json
 from .serializers import BaseSpaceSerializer,ProjectSerializer,BiosampleSerializer,AnalysisSerializer
-from rest_framework import viewsets
+from rest_framework import viewsets, generics
 from .models import Basespace,Project,Biosample,AnalysisStatus
 from .pipeline.basespace import usercreds
 from rest_framework.decorators import api_view
@@ -13,13 +13,11 @@ from .utils import *
 class BSListView(viewsets.ModelViewSet):
     queryset = Basespace.objects.all().order_by('bs_user_id')
     serializer_class = BaseSpaceSerializer
+
     
-    
-    
-    
-class BiosampleView(viewsets.ModelViewSet):
-    queryset = Biosample.objects.all().order_by('id')
-    serializer_class = BiosampleSerializer
+# class BiosampleView(viewsets.ModelViewSet):
+#     queryset = Biosample.objects.all().order_by('id')
+#     serializer_class = BiosampleSerializer
     
     
 class AnalysisView(viewsets.ModelViewSet):
@@ -102,3 +100,28 @@ def getProject(request, pk):
 
     if request.method == 'DELETE':
         return deleteProject(request, pk)
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+@api_view(['GET', 'POST'])
+def getBiosamples(request):
+
+    if request.method == 'GET':
+        print(get_biosample)
+        return get_biosample(request)
+
+    if request.method == 'POST':
+        return createBiosamples(request)

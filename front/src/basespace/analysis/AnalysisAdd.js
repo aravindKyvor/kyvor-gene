@@ -4,7 +4,12 @@ import PropTypes from "prop-types";
 import { Form } from "react-bootstrap";
 import { Link, useHistory } from "react-router-dom";
 import { addAnalysis } from "../../actions/basespace";
+import { toast } from "react-toastify";
 
+
+import "react-toastify/dist/ReactToastify.css";
+
+toast.configure();
 function validate(analysis_type) {
   const errors = [];
 
@@ -64,6 +69,8 @@ export class AnalysisAdd extends Component {
     if (errors.length > 0) {
       this.setState({ errors });
       return;
+    }else if(errors.length === 0){
+      toast.success('Analysis was added successfully')
     }
 
     this.props.addAnalysis(analysis, errors);
@@ -109,12 +116,13 @@ export class AnalysisAdd extends Component {
           <div className="card">
             <div className="card-body">
               <form className="forms-sample" onSubmit={this.onSubmit}>
-                {errors &&
-                  errors.map((error) => (
-                    <p className="alert alert-danger" role="alert" key={error}>
-                      Error: {error}{" "}
-                    </p>
-                  ))}
+              {errors &&
+                    errors.map((error) => (
+                      <div class="alert alert-danger alert-dismissible"  role="alert" key={error}>
+                        
+                        <strong>Error: {error}</strong>
+                      </div>
+                    ))}
                 <Form.Group>
                   <label htmlFor="exampleInputUsername1">Analysis Type</label>
                   <Form.Control
@@ -125,7 +133,7 @@ export class AnalysisAdd extends Component {
                     value={analysis_type}
                     name="analysis_type"
                     onChange={this.onChange}
-                    required
+                  
                   />
                 </Form.Group>
                 <Form.Group>

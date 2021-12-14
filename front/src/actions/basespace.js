@@ -2,79 +2,86 @@ import axios from "axios";
 
 import { tokenHeader } from "../headersauth";
 
-import { POST_BASESPACE, POST_BIOSAMPLE,ADD_ANALYSIS} from "./types";
-import {toast} from 'react-toastify';
- 
-import 'react-toastify/dist/ReactToastify.css';
- 
+import { POST_BASESPACE, POST_BIOSAMPLE, ADD_ANALYSIS } from "./types";
+import { toast } from "react-toastify";
 
-toast.configure()
+import "react-toastify/dist/ReactToastify.css";
 
+toast.configure();
 
 // projects
-export const addBasespace = (project) => (dispatch, getState) => {
-
+export const addBasespace = (project) => (dispatch) => {
   axios
-    .post(
-      `${process.env.REACT_APP_API_URL}/api/projects/`,
-      project,
-      tokenHeader(getState)
-    )
+    .post(`${process.env.REACT_APP_API_URL}/api/projects/`, project)
     .then((res) => {
-    dispatch(
-      toast.success('Your Project added succesfully',{
-       position: "top-right",
-      autoClose: 2000,
-
-      }),
-      
-    )
+     
       dispatch({
         type: POST_BASESPACE,
         payload: res.data,
       });
     })
-    .catch((err) => console.log(err));
+    .catch((err) => {
+      console.log("Error", err);
+      if (err) {
+        toast.error("Your project was not added plz check the details", {
+          position: "top-right",
+          autoClose: 2000,
+        });
+      }
+    });
 };
-
-
-
-
 
 //Project ends
 
-
-export const addBiosample = (project) => (dispatch, getState) => {
+export const addBiosample = (project) => (dispatch) => {
+  
   axios
     .post(
       `${process.env.REACT_APP_API_URL}/api/biosample/`,
       project,
-      tokenHeader(getState)
+      
     )
     .then((res) => {
+     
+      
       dispatch({
+      
         type: POST_BIOSAMPLE,
         payload: res.data,
       });
     })
-    .catch((err) => console.log(err));
+    .catch((err) => {
+      console.log("Error", err);
+      if (err) {
+        toast.error("Biosamples was not added plz check the details", {
+          position: "top-right",
+          autoClose: 2000,
+        });
+      }
+    });
 };
 
-
-export const addAnalysis = (project) => (dispatch, getState) => {
+export const addAnalysis = (project) => (dispatch) => {
   axios
     .post(
       `${process.env.REACT_APP_API_URL}/api/analysis/`,
       project,
-      tokenHeader(getState)
+    
     )
     .then((res) => {
+    
       dispatch({
         type: ADD_ANALYSIS,
         payload: res.data,
       });
     })
-    .catch((err) => console.log(err));
-};
-
-
+    .catch((err) => {
+      console.log("Error", err);
+      if (err) {
+        toast.error("Analysis was not added plz check the details", {
+          position: "top-right",
+          autoClose: 2000,
+        });
+      }
+    });
+  }

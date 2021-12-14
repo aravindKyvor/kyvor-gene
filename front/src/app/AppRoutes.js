@@ -23,7 +23,7 @@ import Credits from "../basespace/credits/Credits";
 import UpdateAnalysis from "../basespace/analysis/UpdateAnalysis";
 import AnalysisList from "../basespace/analysis/AnalysisList";
 import AnalysisAdd from "../basespace/analysis/AnalysisAdd";
-
+import Multi from "../basespace/projects/ProjectId";
 
 
 
@@ -111,6 +111,11 @@ class AppPrivateRoutess extends Component {
             exact
             path="/basespace/projects/list"
             component={ProjectList}
+          />
+            <PrivateRoutes
+            exact
+            path="/basespace/projects/Id"
+            component={Multi}
           />
           <PrivateRoutes
             exact

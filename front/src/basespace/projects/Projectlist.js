@@ -18,20 +18,28 @@ class ProjectList extends React.Component {
   }
 
   fetchData() {
-    fetch("http://localhost:8000/api/projects/")
+    
+      fetch("http://localhost:8000/api/projects/")
       .then((response) => response.json())
       .then((data) => {
         this.setState({
           data: data,
         });
       });
-  }
+  
 
+
+
+    }
+   
   componentDidMount() {
     this.fetchData();
   }
 
   deleteData(id) {
+
+   if(window.confirm('Are you sure want to delete the Project'))
+   {
     fetch("http://localhost:8000/api/project/" + id + "/", {
       method: "DELETE",
       body: JSON.stringify(this.state),
@@ -40,20 +48,26 @@ class ProjectList extends React.Component {
       .then((data) => {
        
         if (data) {
-          this.fetchData();
+
+          this.fetchData(
+           
+          );
         }
         
         
         
       }).catch((e) => {
-       
+       alert('Project was not deleted as it is protected by Bios')
       
         console.error(e);
       });
+   }
+    
       
   }
 
   render() {
+    
     const ProjectData = this.state.data;
     const rows = ProjectData.map((item) => (
       <tr key={item.id}>
@@ -71,6 +85,8 @@ class ProjectList extends React.Component {
 
           </td>
           <td>
+
+            
           <DeleteIcon
             onClick={() => this.deleteData(item.id)}
            

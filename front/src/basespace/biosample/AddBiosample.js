@@ -3,8 +3,13 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { Form } from "react-bootstrap";
 import { Link, useHistory } from "react-router-dom";
-import {addBiosample} from '../../actions/basespace'
+import { addBiosample } from "../../actions/basespace";
+import { toast } from "react-toastify";
+import Multi from "../projects/ProjectId";
 
+import "react-toastify/dist/ReactToastify.css";
+
+toast.configure();
 function validate(biosample_name) {
   const errors = [];
 
@@ -60,8 +65,11 @@ export class AddBiosample extends Component {
     if (errors.length > 0) {
       this.setState({ errors });
       return;
+    } else if (errors.length === 0) {
+      toast.success("Details added");
     }
     this.props.addBiosample(biosample, errors);
+
     this.setState({
       biosample_id: "",
       biosample_type: "",
@@ -85,6 +93,7 @@ export class AddBiosample extends Component {
       biosample_created_on,
       project_id,
     } = this.state;
+
     return (
       <div>
         <div className="page-header">
@@ -104,9 +113,13 @@ export class AddBiosample extends Component {
               <form className="forms-sample" onSubmit={this.onSubmit}>
                 {errors &&
                   errors.map((error) => (
-                    <p className="alert alert-danger" role="alert" key={error}>
-                      Error: {error}{" "}
-                    </p>
+                    <div
+                      class="alert alert-danger alert-dismissible"
+                      role="alert"
+                      key={error}
+                    >
+                      <strong>Error: {error}</strong>
+                    </div>
                   ))}
                 <Form.Group>
                   <label htmlFor="exampleInputUsername1">BioSample Id</label>
@@ -151,7 +164,7 @@ export class AddBiosample extends Component {
                   <input
                     type="text"
                     className="form-control"
-                    placeholder='BioSample Path'
+                    placeholder="BioSample Path"
                     id="inputGroupFile02"
                     value={biosample_path}
                     name="biosample_path"
@@ -165,7 +178,7 @@ export class AddBiosample extends Component {
                     type="text"
                     className="form-control"
                     id="inputGroupFile03"
-                    placeholder='Library Id'
+                    placeholder="Library Id"
                     value={library_id}
                     name="library_id"
                     onChange={this.onChange}
@@ -180,23 +193,28 @@ export class AddBiosample extends Component {
                     id="inputGroupFile04"
                     value={biosample_created_on}
                     name="biosample_created_on"
-                    placeholder='BioSample Created On'
+                    placeholder="BioSample Created On"
                     onChange={this.onChange}
                     required
                   />
                 </Form.Group>
-
+                {/* <FormControl
+                  name="project_id"
+                  componentClass="select"
+                  onChange={this.on}
+                >
+                  {userlist.map((r, i) => (
+                    <option key={i} value={r.id}>
+                      {r.name}
+                    </option>
+                  ))}
+                </FormControl> */}
                 <Form.Group>
-                  <label id="inputGroupFile04">Project Id</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="inputGroupFile04"
+                  <label>Project Id</label>
+                  <Multi
                     value={project_id}
-                    placeholder='Project Id'
                     name="project_id"
                     onChange={this.onChange}
-                    required
                   />
                 </Form.Group>
 

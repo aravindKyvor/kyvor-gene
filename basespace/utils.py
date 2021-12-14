@@ -1,6 +1,7 @@
 from rest_framework.response import Response
+from rest_framework.serializers import Serializer
 from .models import Basespace, Project, Biosample
-from .serializers import  ProjectSerializer
+from .serializers import BiosampleSerializer, ProjectSerializer
 
 
 def getProjectsList(request):
@@ -33,7 +34,6 @@ def createProject(request):
 
     )
     serializer = ProjectSerializer(project, many=False)
- 
 
     return Response(serializer.data)
 
@@ -53,3 +53,37 @@ def deleteProject(request, pk):
     project = Project.objects.get(id=pk)
     project.delete()
     return Response('project was deleted!')
+
+
+def get_biosample(request):
+    biosamples = Biosample.objects.all()
+    serializer = BiosampleSerializer(biosamples, many=True)
+    print(serializer.data)
+    print(Response(serializer.data))
+    return Response(serializer.data)
+
+
+def createBiosamples(request):
+    data = request.data
+    print(data)
+
+    id = data['project_id']
+
+    biosample = Biosample.objects.create(
+
+
+
+        project_id=Project.objects.get(bs_project_id=id),
+        biosample_id=data['biosample_id'],
+
+        biosample_type=data['biosample_type'],
+        biosample_name=data['biosample_name'],
+        biosample_path=data['biosample_path'],
+        library_id=data['library_id'],
+        biosample_created_on=data['biosample_created_on'],
+
+
+    )
+    serializer = BiosampleSerializer(biosample, many=False)
+
+    return Response(serializer.data)

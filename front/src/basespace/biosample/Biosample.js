@@ -4,6 +4,7 @@ import Button from "@material-ui/core/Button";
 import AddIcon from "@material-ui/icons/Add";
 import DeleteIcon from "@material-ui/icons/Delete";
 import EditIcon from "@material-ui/icons/Edit";
+import { ToastContainer, toast } from "react-toastify";
 class Biosample extends React.Component {
   constructor() {
     super();
@@ -27,16 +28,31 @@ class Biosample extends React.Component {
   }
 
   deleteData(id) {
-    fetch("http://localhost:8000/api/biosample/" + id + "/", {
-      method: "DELETE",
-      body: JSON.stringify(this.state),
-    })
-      .then((response) => response)
-      .then((data) => {
-        if (data) {
-          this.fetchData();
-        }
-      });
+    if(window.confirm('Are you sure want to delete the Analysis')){
+      fetch("http://localhost:8000/api/biosample/" + id + "/", {
+        method: "DELETE",
+        body: JSON.stringify(this.state),
+      })
+        .then((response) => response)
+        .then((data) => {
+          if (data) {
+            this.fetchData(
+              
+              
+            );
+          }
+        }).catch((err) => {
+          console.log("Error", err);
+          if (err) {
+            toast.error("Biosample list was not deleted", {
+              position: "top-right",
+              autoClose: 2000,
+            });
+          }
+        });
+
+
+    }
   }
 
   render() {
