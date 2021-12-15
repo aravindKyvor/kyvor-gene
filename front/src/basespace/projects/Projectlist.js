@@ -1,14 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Button from "@material-ui/core/Button";
-import AddIcon from '@material-ui/icons/Add';
-import DeleteIcon from '@material-ui/icons/Delete';
-import EditIcon from '@material-ui/icons/Edit';
-import { css } from "glamor";
-import { ToastContainer, toast } from "react-toastify";
+import AddIcon from "@material-ui/icons/Add";
+import DeleteIcon from "@material-ui/icons/Delete";
+import EditIcon from "@material-ui/icons/Edit";
 
+import { toast } from "react-toastify";
 
-import "react-toastify/dist/ReactToastify.css"
+import "react-toastify/dist/ReactToastify.css";
+
+toast.configure();
+
 class ProjectList extends React.Component {
   constructor() {
     super();
@@ -18,56 +20,45 @@ class ProjectList extends React.Component {
   }
 
   fetchData() {
-    
-      fetch("http://localhost:8000/api/projects/")
+    fetch("http://localhost:8000/api/projects/")
       .then((response) => response.json())
       .then((data) => {
         this.setState({
           data: data,
         });
       });
-  
+  }
 
-
-
-    }
-   
   componentDidMount() {
     this.fetchData();
   }
 
   deleteData(id) {
-
-   if(window.confirm('Are you sure want to delete the Project'))
-   {
-    fetch("http://localhost:8000/api/project/" + id + "/", {
-      method: "DELETE",
-      body: JSON.stringify(this.state),
-    })
-      .then((response) => response)
-      .then((data) => {
-       
-        if (data) {
-
-          this.fetchData(
-           
-          );
-        }
-        
-        
-        
-      }).catch((e) => {
-       alert('Project was not deleted as it is protected by Bios')
-      
-        console.error(e);
-      });
-   }
+  
+      if (window.confirm("Are you sure want to delete the Project")) {
+        fetch("http://localhost:8000/api/project/" + id + "/", {
+          method: "DELETE",
+          body: JSON.stringify(this.state),
+        })
+          .then((response) => response)
+         
+          .then((data) => {
+           if(data){
+             toast.error('not deletd')}
+             else if (!data){
+               toast.success('deleted')
+             }
+            if (data) {
+              this.fetchData();
+            }
+          });
+         
+      }
     
-      
+    
   }
-
   render() {
-    
+   
     const ProjectData = this.state.data;
     const rows = ProjectData.map((item) => (
       <tr key={item.id}>
@@ -79,19 +70,12 @@ class ProjectList extends React.Component {
         <td>{item.bs_user_id}</td>
 
         <td>
-          <Link to={"/project/update/" + item.id} >
-         <EditIcon/>
+          <Link to={"/project/update/" + item.id}>
+            <EditIcon />
           </Link>
-
-          </td>
-          <td>
-
-            
-          <DeleteIcon
-            onClick={() => this.deleteData(item.id)}
-           
-          />
-         
+        </td>
+        <td>
+          <DeleteIcon onClick={() => this.deleteData(item.id)} />
         </td>
       </tr>
     ));
@@ -105,23 +89,20 @@ class ProjectList extends React.Component {
           <div className="col-12 grid-margin">
             <div className="card">
               <div className="card-body">
-              <h4 className="card-header d-flex justify-content-between align-items-center">Project Lists
-                
-                <Link to='/basespace/projects/addproject' style={{textDecoration:'none'}}>
-                  
-                <Button
-                     variant="outlined"
-                     color="secondary"
-                     startIcon={<AddIcon />}
-                     
-                     
+                <h4 className="card-header d-flex justify-content-between align-items-center">
+                  Project Lists
+                  <Link
+                    to="/basespace/projects/addproject"
+                    style={{ textDecoration: "none" }}
+                  >
+                    <Button
+                      variant="outlined"
+                      color="secondary"
+                      startIcon={<AddIcon />}
                     >
                       Add Project
                     </Button>
-                  
-                  
                   </Link>
-                
                 </h4>
 
                 {/* <div class="text-center">
@@ -162,7 +143,7 @@ class ProjectList extends React.Component {
                           {" "}
                           <strong> Bs User Id</strong>{" "}
                         </th>
-                        <th colSpan='2'>
+                        <th colSpan="2">
                           {" "}
                           <strong>Actions</strong>{" "}
                         </th>
@@ -179,5 +160,6 @@ class ProjectList extends React.Component {
     );
   }
 }
+
 
 export default ProjectList;

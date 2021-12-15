@@ -14,7 +14,8 @@ function validate(biosample_name) {
   const errors = [];
 
   if (biosample_name === "") {
-    errors.push("please enter you project Name");
+    errors.push("please enter you biosample Name");
+    
   }
   return errors;
 }
@@ -66,8 +67,9 @@ export class AddBiosample extends Component {
       this.setState({ errors });
       return;
     } else if (errors.length === 0) {
-      toast.success("Details added");
+      toast.success("Required Fields Are Entered Correctly");
     }
+    
     this.props.addBiosample(biosample, errors);
 
     this.setState({
@@ -131,7 +133,6 @@ export class AddBiosample extends Component {
                     value={biosample_id}
                     name="biosample_id"
                     onChange={this.onChange}
-                    required
                   />
                 </Form.Group>
                 <Form.Group>
@@ -210,11 +211,16 @@ export class AddBiosample extends Component {
                   ))}
                 </FormControl> */}
                 <Form.Group>
-                  <label>Project Id</label>
-                  <Multi
+                  <label id="inputGroupFile05">Project Name</label>
+                  <input
+                    id="inputGroupFile05"
+                    type="text"
+                    placeholder="Project Name"
+                    className="form-control"
                     value={project_id}
                     name="project_id"
                     onChange={this.onChange}
+                    required
                   />
                 </Form.Group>
 

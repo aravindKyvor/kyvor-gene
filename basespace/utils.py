@@ -55,6 +55,16 @@ def deleteProject(request, pk):
     return Response('project was deleted!')
 
 
+
+
+
+
+
+
+
+
+
+
 def get_biosample(request):
     biosamples = Biosample.objects.all()
     serializer = BiosampleSerializer(biosamples, many=True)
@@ -62,6 +72,10 @@ def get_biosample(request):
     print(Response(serializer.data))
     return Response(serializer.data)
 
+def getBiosampleDetail(request, pk):
+    biosample = Biosample.objects.get(id=pk)
+    serializer = BiosampleSerializer(biosample, many=False)
+    return Response(serializer.data)
 
 def createBiosamples(request):
     data = request.data
@@ -73,7 +87,7 @@ def createBiosamples(request):
 
 
 
-        project_id=Project.objects.get(bs_project_id=id),
+        project_id=Project.objects.get(project_name=id),
         biosample_id=data['biosample_id'],
 
         biosample_type=data['biosample_type'],
@@ -85,5 +99,20 @@ def createBiosamples(request):
 
     )
     serializer = BiosampleSerializer(biosample, many=False)
+
+    return Response(serializer.data)
+
+def deleteBiosample(request, pk):
+    biosample = Biosample.objects.get(id=pk)
+    biosample.delete()
+    return Response('project was deleted!')
+
+def updateBiosample(request, pk):
+    data = request.data
+    biosample = Biosample.objects.get(id=pk)
+    serializer = BiosampleSerializer(instance=biosample, data=data)
+
+    if serializer.is_valid():
+        serializer.save()
 
     return Response(serializer.data)

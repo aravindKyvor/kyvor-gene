@@ -38,8 +38,8 @@ export default class Multi extends Component {
       <div>
         <Select options={this.state.selectOptions} />
         {this.state.selectOptions.map((r, i) => (
-          <option key={i} value={r.id}>
-            {r.bs_project_id}
+          <option key={i} >
+            {i.id}
           </option>
         ))}
       </div>

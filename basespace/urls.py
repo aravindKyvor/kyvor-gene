@@ -14,7 +14,8 @@ urlpatterns = [
      path('credits/',views.get_credits),
      path('projects/',views.getProjects),
     path('project/<str:pk>/',views.getProject),
-    path('biosample/',views.getBiosamples),
+    path('biosample/',views.getBiosample),
+     path('biosamples/<str:pk>/',views.getBiosamples),
   
     
    

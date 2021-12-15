@@ -14,7 +14,7 @@ function validate(analysis_type) {
   const errors = [];
 
   if (analysis_type === "") {
-    errors.push("please enter you project Name");
+    errors.push("please enter your Analysis_type");
   }
   return errors;
 }

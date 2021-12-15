@@ -1,10 +1,6 @@
-import {
-  POST_BASESPACE,DELETE_PROJECT
- 
-} from "../actions/types";
+import { POST_BASESPACE } from "../actions/types";
 
 const initialState = {
- 
   projects: [],
 };
 
@@ -13,12 +9,6 @@ export default function (state = initialState, action) {
     case POST_BASESPACE:
       return { ...state, projects: action.payload };
 
-      case DELETE_PROJECT:
-      return {
-        ...state,
-        projects: state.projects.filter((project) => project.id !== action.payload),
-      };
- 
     default:
       return state;
   }

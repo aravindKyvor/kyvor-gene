@@ -31,7 +31,7 @@ export const Update = () => {
 
   const retrieveMenu = () => {
     axios
-      .get(`${baseURL}/biosample/${id}/`, {
+      .get(`${baseURL}/biosamples/${id}/`, {
         headers: {
           headers,
         },
@@ -66,7 +66,7 @@ export const Update = () => {
     };
 
     axios
-      .put(`${baseURL}/biosample/${id}/`, data, {
+      .put(`${baseURL}/biosamples/${id}/`, data, {
         headers: {
           headers,
         },

@@ -28,8 +28,8 @@ class Biosample extends React.Component {
   }
 
   deleteData(id) {
-    if(window.confirm('Are you sure want to delete the Analysis')){
-      fetch("http://localhost:8000/api/biosample/" + id + "/", {
+    if(window.confirm('Are you sure want to delete the Biosample')){
+      fetch("http://localhost:8000/api/biosamples/" + id + "/", {
         method: "DELETE",
         body: JSON.stringify(this.state),
       })

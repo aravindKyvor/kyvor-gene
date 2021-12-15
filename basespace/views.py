@@ -117,7 +117,7 @@ def getProject(request, pk):
     
     
 @api_view(['GET', 'POST'])
-def getBiosamples(request):
+def getBiosample(request):
 
     if request.method == 'GET':
         print(get_biosample)
@@ -125,3 +125,18 @@ def getBiosamples(request):
 
     if request.method == 'POST':
         return createBiosamples(request)
+    
+    
+@api_view(['GET', 'PUT', 'DELETE'])
+def getBiosamples(request, pk):
+
+ 
+    if request.method=='GET':
+        return getBiosampleDetail(request,pk)
+    if request.method == 'PUT':
+        return updateBiosample(request, pk)
+
+    if request.method == 'DELETE':
+        return deleteBiosample(request, pk)
+    
+    

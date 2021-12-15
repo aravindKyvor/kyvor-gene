@@ -25,11 +25,6 @@ import AnalysisList from "../basespace/analysis/AnalysisList";
 import AnalysisAdd from "../basespace/analysis/AnalysisAdd";
 import Multi from "../basespace/projects/ProjectId";
 
-
-
-
-
-
 const Analysis = lazy(() => import("./basic-ui/Analysis"));
 
 const PrivateRoutes = lazy(() => import("../PrivateRoutes"));
@@ -52,13 +47,12 @@ class AppPrivateRoutess extends Component {
   render() {
     return (
       <Suspense fallback={<Spinner />}>
-       
         <Switch>
           {/* Dashboard Starts  */}
 
           <PrivateRoutes exact path="/" component={Dashboard} />
           {/* Dashboard Ends */}
-         
+
           {/* Basic ui Starts */}
           <PrivateRoutes exact path="/basic-ui/Analysis" component={Analysis} />
           <PrivateRoutes
@@ -90,7 +84,7 @@ class AppPrivateRoutess extends Component {
 
           {/* Shared Section Starts */}
           {/* Shared Section Ends */}
-         
+
           {/* Basespace Biosample Section */}
           <PrivateRoutes
             exact
@@ -112,7 +106,7 @@ class AppPrivateRoutess extends Component {
             path="/basespace/projects/list"
             component={ProjectList}
           />
-            <PrivateRoutes
+          <PrivateRoutes
             exact
             path="/basespace/projects/Id"
             component={Multi}
@@ -169,7 +163,7 @@ class AppPrivateRoutess extends Component {
             component={WhoAmI}
           />
           {/* Basespace User Ends */}
-        
+
           <PrivateRoutes
             exact
             path="/form-Elements/basic-elements"
@@ -208,7 +202,6 @@ class AppPrivateRoutess extends Component {
           <PrivateRoutes path="/profile" component={Profile} />
           <Redirect to="/" />
         </Switch>
-       
       </Suspense>
     );
   }
