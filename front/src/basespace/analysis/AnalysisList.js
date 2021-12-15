@@ -27,32 +27,38 @@ class AnalysisList extends React.Component {
     this.fetchData();
   }
 
+  
   deleteData(id) {
-    if(window.confirm('Are you sure want to delete the Analysis')){
+  
+    if (window.confirm("Are you sure want to delete the Analysis")) {
       fetch("http://localhost:8000/api/analysis/" + id + "/", {
         method: "DELETE",
         body: JSON.stringify(this.state),
       })
+       
         .then((response) => response)
         .then((data) => {
-          if (data) {
-            this.fetchData(
-             
+          if (data.status === 500) {
+            console.log(data.status === 500);
+
+            toast.error(
+              "Analysis not deleted Plz check the server"
             );
+          } else {
+            console.log(data);
+            toast.success("Analysis successfully deleted");
           }
-        }).catch((err) => {
-          console.log("Error", err);
-          if (err) {
-            toast.error("!Application list was not deleted", {
-              position: "top-right",
-              autoClose: 2000,
-            });
+       
+          
+          if (data) {
+            this.fetchData();
           }
         });
-
+       
     }
-    
-  }
+  
+  
+}
   render() {
     const Analysis = this.state.data;
     const rows = Analysis.map((analysis) => (

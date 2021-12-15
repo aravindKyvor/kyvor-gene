@@ -4,7 +4,7 @@ import Button from "@material-ui/core/Button";
 import AddIcon from "@material-ui/icons/Add";
 import DeleteIcon from "@material-ui/icons/Delete";
 import EditIcon from "@material-ui/icons/Edit";
-
+import { css } from "glamor";
 import { toast } from "react-toastify";
 
 import "react-toastify/dist/ReactToastify.css";
@@ -40,14 +40,21 @@ class ProjectList extends React.Component {
           method: "DELETE",
           body: JSON.stringify(this.state),
         })
-          .then((response) => response)
          
+          .then((response) => response)
           .then((data) => {
-           if(data){
-             toast.error('not deletd')}
-             else if (!data){
-               toast.success('deleted')
-             }
+            if (data.status === 500) {
+              console.log(data.status === 500);
+  
+              toast.error(
+                "Project has been used by some other application! You cannot delete it"
+              );
+            } else {
+              console.log(data);
+              toast.success("Project successfully deleted");
+            }
+         
+            
             if (data) {
               this.fetchData();
             }
@@ -58,7 +65,6 @@ class ProjectList extends React.Component {
     
   }
   render() {
-   
     const ProjectData = this.state.data;
     const rows = ProjectData.map((item) => (
       <tr key={item.id}>
@@ -160,6 +166,5 @@ class ProjectList extends React.Component {
     );
   }
 }
-
 
 export default ProjectList;

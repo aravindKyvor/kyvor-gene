@@ -27,33 +27,39 @@ class Biosample extends React.Component {
     this.fetchData();
   }
 
+  
+
   deleteData(id) {
-    if(window.confirm('Are you sure want to delete the Biosample')){
+  
+    if (window.confirm("Are you sure want to delete the Biosample")) {
       fetch("http://localhost:8000/api/biosamples/" + id + "/", {
         method: "DELETE",
         body: JSON.stringify(this.state),
       })
+       
         .then((response) => response)
         .then((data) => {
-          if (data) {
-            this.fetchData(
-              
-              
+          if (data.status === 500) {
+            console.log(data.status === 500);
+
+            toast.error(
+              "Biosamples not deleted Plz check the server"
             );
+          } else {
+            console.log(data);
+            toast.success("Biosamples successfully deleted");
           }
-        }).catch((err) => {
-          console.log("Error", err);
-          if (err) {
-            toast.error("Biosample list was not deleted", {
-              position: "top-right",
-              autoClose: 2000,
-            });
+       
+          
+          if (data) {
+            this.fetchData();
           }
         });
-
-
+       
     }
-  }
+  
+  
+}
 
   render() {
     const BiosampleData = this.state.data;

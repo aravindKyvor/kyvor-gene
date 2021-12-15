@@ -20,16 +20,24 @@ const WhoAmI = () => {
   };
   return (
     <div>
-       <div className="page-header ">
-        
-         <h3 className="text-center" >Credits Remaining </h3>
-        
-         
+      <div style={{ maxWidth: "90%", margin: "5vh auto" }}>
+        <div className="page-header">
+          <h3 className="page-title">
+            <span className="page-title-icon bg-gradient-primary text-white mr-2">
+              <i
+                className="mdi mdi-credit-card "
+                style={{ color: "black" }}
+              ></i>
+            </span>{" "}
+            Credits Remaning{" "}
+          </h3>
+          <br />
         </div>
+      </div>
 
       <Form>
         <div className="row justify-content-center">
-          <div className="col-7 justify-content-center">
+          <div className="col-8 justify-content-center">
             <div className="card">
               <div className="card-body">
                 <h4 className="card-header d-flex justify-content-between align-items-center">
