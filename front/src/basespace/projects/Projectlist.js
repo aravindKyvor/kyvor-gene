@@ -6,31 +6,17 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import EditIcon from "@material-ui/icons/Edit";
 import { css } from "glamor";
 import { toast } from "react-toastify";
-
+import {connect} from 'react-redux'
+import {getProject} from '../../actions/basespace'
 import "react-toastify/dist/ReactToastify.css";
 
 toast.configure();
 
 class ProjectList extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      data: [],
-    };
-  }
-
-  fetchData() {
-    fetch("http://localhost:8000/api/projects/")
-      .then((response) => response.json())
-      .then((data) => {
-        this.setState({
-          data: data,
-        });
-      });
-  }
+  
 
   componentDidMount() {
-    this.fetchData();
+    this.props.getProject();
   }
 
   deleteData(id) {
@@ -56,7 +42,7 @@ class ProjectList extends React.Component {
          
             
             if (data) {
-              this.fetchData();
+              this.props.getProject();
             }
           });
          
@@ -65,8 +51,8 @@ class ProjectList extends React.Component {
     
   }
   render() {
-    const ProjectData = this.state.data;
-    const rows = ProjectData.map((item) => (
+    const {project} = this.props;
+    const rows = project.map((item) => (
       <tr key={item.id}>
         <td>{item.project_name}</td>
         <td>{item.bs_default_project}</td>
@@ -75,11 +61,7 @@ class ProjectList extends React.Component {
         <td>{item.project_created_on}</td>
         <td>{item.bs_user_id}</td>
 
-        <td>
-          <Link to={"/project/update/" + item.id}>
-            <EditIcon />
-          </Link>
-        </td>
+       
         <td>
           <DeleteIcon onClick={() => this.deleteData(item.id)} />
         </td>
@@ -97,30 +79,10 @@ class ProjectList extends React.Component {
               <div className="card-body">
                 <h4 className="card-header d-flex justify-content-between align-items-center">
                   Project Lists
-                  <Link
-                    to="/basespace/projects/addproject"
-                    style={{ textDecoration: "none" }}
-                  >
-                    <Button
-                      variant="outlined"
-                      color="secondary"
-                      startIcon={<AddIcon />}
-                    >
-                      Add Project
-                    </Button>
-                  </Link>
+                  
                 </h4>
 
-                {/* <div class="text-center">
-                  <Link
-                    to="/basespace/projects/addproject"
-                    className="btn btn-secondary text-dark"
-                    style={{ backgroundColor: "#fec107", }}
-                  >
-                    {" "}
-                    ADD DETAILS
-                  </Link>
-                </div> */}
+                
                 <hr />
 
                 <div className="table-responsive">
@@ -166,5 +128,7 @@ class ProjectList extends React.Component {
     );
   }
 }
-
-export default ProjectList;
+const mapStateToProps= state => ({
+  project: state.project.project
+})
+export default connect(mapStateToProps,{getProject}) (ProjectList);

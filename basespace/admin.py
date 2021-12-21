@@ -1,13 +1,13 @@
 from django.contrib import admin
 
-from .models import Basespace,Project,Biosample,AnalysisStatus
+from .models import Basespace,Project,Biosample,AnalysisStatus,PipelineTO
 admin.site.register(Basespace)
 
 admin.site.register(Project)
 
 admin.site.register(Biosample)
 
-
+admin.site.register(PipelineTO)
 admin.site.register(AnalysisStatus)
 
 

@@ -1,30 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Button from "@material-ui/core/Button";
-import AddIcon from "@material-ui/icons/Add";
+// import AddIcon from "@material-ui/icons/Add";
 import DeleteIcon from "@material-ui/icons/Delete";
-import EditIcon from "@material-ui/icons/Edit";
-import { ToastContainer, toast } from "react-toastify";
+// import EditIcon from "@material-ui/icons/Edit";
+import {connect }from 'react-redux'
+import {getBiosample} from '../../actions/basespace'
+import { toast } from "react-toastify";
 class Biosample extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      data: [],
-    };
-  }
-
-  fetchData() {
-    fetch("http://localhost:8000/api/biosample/")
-      .then((response) => response.json())
-      .then((data) => {
-        this.setState({
-          data: data,
-        });
-      });
-  }
-
+  
   componentDidMount() {
-    this.fetchData();
+    this.props.getBiosample();
   }
 
   
@@ -52,7 +38,7 @@ class Biosample extends React.Component {
        
           
           if (data) {
-            this.fetchData();
+            this.props.getBiosample();
           }
         });
        
@@ -62,8 +48,8 @@ class Biosample extends React.Component {
 }
 
   render() {
-    const BiosampleData = this.state.data;
-    const rows = BiosampleData.map((item) => (
+    const {biosample} = this.props;
+    const rows = biosample.map((item) => (
       <tr key={item.id}>
         <td>{item.biosample_id}</td>
         <td>{item.biosample_type}</td>
@@ -72,11 +58,7 @@ class Biosample extends React.Component {
         <td>{item.library_id}</td>
         <td>{item.biosample_created_on}</td>
 
-        <td>
-          <Link to={"/update/" + item.id}>
-            <EditIcon />
-          </Link>
-        </td>
+      
         <td>
           <DeleteIcon onClick={() => this.deleteData(item.id)} />
         </td>
@@ -94,7 +76,7 @@ class Biosample extends React.Component {
               <div className="card-body">
                 <h4 className="card-header d-flex justify-content-between align-items-center">
                   BioSample Lists
-                  <Link
+                  {/* <Link
                     to="/basespace/addbiosample"
                     style={{ textDecoration: "none" }}
                   >
@@ -105,7 +87,7 @@ class Biosample extends React.Component {
                     >
                       Add Biosample
                     </Button>
-                  </Link>
+                  </Link> */}
                 </h4>
 
                 <hr />
@@ -136,7 +118,7 @@ class Biosample extends React.Component {
                           {" "}
                           <strong> Created On</strong>{" "}
                         </th>
-                        <th colSpan="2">
+                        <th >
                           {" "}
                           <strong>Actions</strong>{" "}
                         </th>
@@ -154,4 +136,9 @@ class Biosample extends React.Component {
   }
 }
 
-export default Biosample;
+
+const mapStateToProps = state => ({
+	biosample: state.biosample.biosample
+});
+
+export default connect(mapStateToProps,{getBiosample}) (Biosample);

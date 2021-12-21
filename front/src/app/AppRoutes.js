@@ -9,21 +9,20 @@ import Reports1 from "./basic-ui/Reports1";
 import Basespace from "./basic-ui/Basespace";
 import Basespace1 from "./basic-ui/Basespace1";
 import Analysis2 from "./basic-ui/Analysis2";
-import AddBiosample from "../basespace/biosample/AddBiosample";
+
 import EditForm from "./form-elements/EditForm";
 import Biosample from "../basespace/biosample/Biosample";
-import Update from "../basespace/biosample/UpdateBioSample";
+
 import ProjectList from "../basespace/projects/Projectlist";
-import Addproject from "../basespace/projects/Addproject";
-import UpdateProject from "../basespace/projects/UpdateProject";
+
 import ApplicationList from "../basespace/applications/Applicationlist";
 import ApplicationDetail from "../basespace/applications/ApplicationDetail";
 import WhoAmI from "../basespace/users/WhoAmI";
 import Credits from "../basespace/credits/Credits";
-import UpdateAnalysis from "../basespace/analysis/UpdateAnalysis";
+
 import AnalysisList from "../basespace/analysis/AnalysisList";
-import AnalysisAdd from "../basespace/analysis/AnalysisAdd";
-import Multi from "../basespace/projects/ProjectId";
+
+
 
 const Analysis = lazy(() => import("./basic-ui/Analysis"));
 
@@ -36,9 +35,8 @@ const Profile = lazy(() => import("../app/shared/Profile"));
 
 const BasicElements = lazy(() => import("./form-elements/BasicElements"));
 const Patientform = lazy(() => import("./form-elements/Patientform"));
-const BasicTable = lazy(() => import("./tables/BasicTable"));
 
-const Mdi = lazy(() => import("./icons/Mdi"));
+
 
 const Error404 = lazy(() => import("./error-pages/Error404"));
 const Error500 = lazy(() => import("./error-pages/Error500"));
@@ -91,12 +89,6 @@ class AppPrivateRoutess extends Component {
             path="/basespace/biosample"
             component={Biosample}
           />
-          <PrivateRoutes
-            exact
-            path="/basespace/addbiosample"
-            component={AddBiosample}
-          />
-          <PrivateRoutes exact path="/update/:id" component={Update} />
 
           {/* BaseSpace BioSample Ends */}
 
@@ -106,22 +98,7 @@ class AppPrivateRoutess extends Component {
             path="/basespace/projects/list"
             component={ProjectList}
           />
-          <PrivateRoutes
-            exact
-            path="/basespace/projects/Id"
-            component={Multi}
-          />
-          <PrivateRoutes
-            exact
-            path="/basespace/projects/addproject"
-            component={Addproject}
-          />
-
-          <PrivateRoutes
-            exact
-            path="/project/update/:id"
-            component={UpdateProject}
-          />
+          
 
           {/* Project Ends */}
 
@@ -129,19 +106,8 @@ class AppPrivateRoutess extends Component {
 
           <PrivateRoutes
             exact
-            path="/basespace/projects/analysis/add"
-            component={AnalysisAdd}
-          />
-
-          <PrivateRoutes
-            exact
             path="/basespace/analysis"
             component={AnalysisList}
-          />
-          <PrivateRoutes
-            exact
-            path="/analysis/update/:id"
-            component={UpdateAnalysis}
           />
 
           {/* Analysis End */}
@@ -179,14 +145,10 @@ class AppPrivateRoutess extends Component {
             path="/analysis/projectform"
             component={Projectform}
           />
-          <PrivateRoutes
-            exact
-            path="/tables/basic-table"
-            component={BasicTable}
-          />
-          <PrivateRoutes exact path="/basespace/credits" component={Credits} />
 
-          <PrivateRoutes exact path="/icons/mdi" component={Mdi} />
+<PrivateRoutes exact path="/basespace/credits" component={Credits} />
+
+         
           <Route exact path="/user-pages/login-1" component={Login} />
           <Route exact path="/google" component={Google} />
 

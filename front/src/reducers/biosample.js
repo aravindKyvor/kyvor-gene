@@ -1,22 +1,19 @@
-import { POST_BIOSAMPLE, POST_BIOSAMPLE_ERROR } from "../actions/types";
+import { GET_BIOSAMPLE } from "../actions/types";
 
 const initialState = {
-  projects: [],
-  error: null,
+  biosample: [],
+  
 };
 
 export default function (state=initialState, action) {
   switch (action.type) {
-    case POST_BIOSAMPLE:
+    case GET_BIOSAMPLE:
       return {
         ...state,
-        projects: [...state.projects, action.payload],
+        biosample: action.payload,
       };
-    case POST_BIOSAMPLE_ERROR:
-      return {
-        projects: [],
-        error: action.payload,
-      };
+
+   
 
     default:
       return state;

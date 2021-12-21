@@ -9,7 +9,8 @@ from .models import Basespace,Project,Biosample,AnalysisStatus
 from .pipeline.basespace import usercreds
 from rest_framework.decorators import api_view
 from .utils import *
-
+import os     
+print(os.getcwd())     
 class BSListView(viewsets.ModelViewSet):
     queryset = Basespace.objects.all().order_by('bs_user_id')
     serializer_class = BaseSpaceSerializer
@@ -32,6 +33,8 @@ def get_application(request):
 
     req = requests.get(request_url, headers=basespace_credentials["headers"])
     req_status = req.status_code
+    print(req_status)
+    print(os.getcwd())
     
     
 

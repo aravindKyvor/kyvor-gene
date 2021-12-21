@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import { Dropdown } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { Trans } from "react-i18next";
+
 import User from "../../User";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
@@ -52,11 +52,11 @@ class Navbar extends Component {
                   <Dropdown alignRight>
                     <Dropdown.Toggle className="nav-link">
                       <div className="nav-profile-img">
-                      <Trans>
+                    
                             <strong>
                               <User />
                             </strong>{" "}
-                          </Trans>
+                       
                       </div>
 
                       
@@ -65,7 +65,7 @@ class Navbar extends Component {
                     <Dropdown.Menu className="navbar-dropdown">
                       <Dropdown.Item>
                         <i className="mdi mdi-logout mr-2 text-primary"></i>
-                        <Trans>
+                      
                           {" "}
                           <Link
                             to="/user-pages/login-1"
@@ -73,7 +73,7 @@ class Navbar extends Component {
                           >
                             Signout
                           </Link>
-                        </Trans>
+                        
                       </Dropdown.Item>
                     </Dropdown.Menu>
                   </Dropdown>
