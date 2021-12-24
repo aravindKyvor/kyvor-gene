@@ -21,9 +21,16 @@ const Google = ({ googleAuthenticate, isAuthenticated }) => {
   }, [location]);
 
   if (isAuthenticated) {
-    return <Redirect to="/" />;
+    return (<Redirect to={{
+      pathname: "/"
+     
+  }} />);
   } else if (!isAuthenticated) {
-    return <Redirect to="/user-pages/login-1" />;
+   
+    return (<Redirect to={{
+      pathname:"/user-pages/login-1"
+     
+  }} />);
   }
 
   return <div></div>;

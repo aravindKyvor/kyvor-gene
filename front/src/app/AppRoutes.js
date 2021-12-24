@@ -162,7 +162,7 @@ class AppPrivateRoutess extends Component {
           />
 
           <PrivateRoutes path="/profile" component={Profile} />
-          <Redirect to="/" />
+        
         </Switch>
       </Suspense>
     );

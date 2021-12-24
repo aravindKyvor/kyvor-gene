@@ -182,8 +182,8 @@ AUTHENTICATION_BACKENDS = (
 
 SIMPLE_JWT = {
     'AUTH_HEADER_TYPES': ('JWT',),
-    'ACCESS_TOKEN_LIFETIME': timedelta(days=100),
-    'REFRESH_TOKEN_LIFETIME': timedelta(days=200),
+    'ACCESS_TOKEN_LIFETIME': timedelta(days=1000),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=2000),
     'AUTH_TOKEN_CLASSES': (
         'rest_framework_simplejwt.tokens.AccessToken',
     )

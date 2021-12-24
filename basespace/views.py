@@ -21,9 +21,10 @@ class BSListView(viewsets.ModelViewSet):
 #     serializer_class = BiosampleSerializer
     
     
-class AnalysisView(viewsets.ModelViewSet):
-    queryset = AnalysisStatus.objects.all().order_by('id')
-    serializer_class = AnalysisSerializer
+# class AnalysisView(viewsets.ModelViewSet):
+#     queryset = AnalysisStatus.objects.all().order_by('id')
+#     serializer_class = AnalysisSerializer
+  
     
     
 @api_view(['GET'])
@@ -143,3 +144,37 @@ def getBiosamples(request, pk):
         return deleteBiosample(request, pk)
     
     
+    
+    
+    
+    
+@api_view(['GET'])
+def get_NewProjects(request):
+    basespace_credentials = usercreds()
+    request_url = "https://basespace.illumina.com/v2/users/276714439/projects/"
+
+    req = requests.get(request_url, headers=basespace_credentials["headers"])
+    req_status = req.status_code
+    print(req_status)
+    print(os.getcwd())
+    
+    
+
+    if req_status == 200 or req_status == 201:
+        
+        return JsonResponse(req.json())
+    
+    
+    
+    
+@api_view(['GET'])
+def get_analysis(request):
+    basespace_credentials = usercreds()
+    request_url = "https://api.basespace.illumina.com/v1pre3/users/current/appsessions/"
+
+    req = requests.get(request_url, headers=basespace_credentials["headers"])
+    req_status = req.status_code
+
+    if req_status == 200 or req_status == 201:
+        print(req.json())
+        return JsonResponse(req.json())

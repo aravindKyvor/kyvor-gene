@@ -1,57 +1,53 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import Button from "@material-ui/core/Button";
 import AddIcon from "@material-ui/icons/Add";
 import DeleteIcon from "@material-ui/icons/Delete";
 import EditIcon from "@material-ui/icons/Edit";
 import { css } from "glamor";
 import { toast } from "react-toastify";
-import {connect} from 'react-redux'
-import {getProject} from '../../actions/basespace'
+import { connect } from "react-redux";
+import { useHistory, Redirect } from "react-router-dom";
+
+import { getProject } from "../../actions/basespace";
 import "react-toastify/dist/ReactToastify.css";
 
 toast.configure();
 
 class ProjectList extends React.Component {
-  
-
   componentDidMount() {
     this.props.getProject();
+    setTimeout(function () {
+      window.location.href = "http://localhost:8000/basespace/analysis";
+    }, 3000);
   }
 
   deleteData(id) {
-  
-      if (window.confirm("Are you sure want to delete the Project")) {
-        fetch("http://localhost:8000/api/project/" + id + "/", {
-          method: "DELETE",
-          body: JSON.stringify(this.state),
-        })
-         
-          .then((response) => response)
-          .then((data) => {
-            if (data.status === 500) {
-              console.log(data.status === 500);
-  
-              toast.error(
-                "Project has been used by some other application! You cannot delete it"
-              );
-            } else {
-              console.log(data);
-              toast.success("Project successfully deleted");
-            }
-         
-            
-            if (data) {
-              this.props.getProject();
-            }
-          });
-         
-      }
-    
-    
+    if (window.confirm("Are you sure want to delete the Project")) {
+      fetch("http://localhost:8000/api/project/" + id + "/", {
+        method: "DELETE",
+        body: JSON.stringify(this.state),
+      })
+        .then((response) => response)
+        .then((data) => {
+          if (data.status === 500) {
+            console.log(data.status === 500);
+
+            toast.error(
+              "Project has been used by some other application! You cannot delete it"
+            );
+          } else {
+            console.log(data);
+            toast.success("Project successfully deleted");
+          }
+
+          if (data) {
+            this.props.getProject();
+          }
+        });
+    }
   }
   render() {
-    const {project} = this.props;
+    const { project } = this.props;
     const rows = project.map((item) => (
       <tr key={item.id}>
         <td>{item.project_name}</td>
@@ -61,7 +57,6 @@ class ProjectList extends React.Component {
         <td>{item.project_created_on}</td>
         <td>{item.bs_user_id}</td>
 
-       
         <td>
           <DeleteIcon onClick={() => this.deleteData(item.id)} />
         </td>
@@ -79,10 +74,8 @@ class ProjectList extends React.Component {
               <div className="card-body">
                 <h4 className="card-header d-flex justify-content-between align-items-center">
                   Project Lists
-                  
                 </h4>
 
-                
                 <hr />
 
                 <div className="table-responsive">
@@ -128,7 +121,7 @@ class ProjectList extends React.Component {
     );
   }
 }
-const mapStateToProps= state => ({
-  project: state.project.project
-})
-export default connect(mapStateToProps,{getProject}) (ProjectList);
+const mapStateToProps = (state) => ({
+  project: state.project.project,
+});
+export default connect(mapStateToProps, { getProject })(ProjectList);
