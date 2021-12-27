@@ -52,7 +52,7 @@ MIDDLEWARE = [
     'social_django.middleware.SocialAuthExceptionMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-     'corsheaders.middleware.CorsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -65,7 +65,7 @@ ROOT_URLCONF = 'kyvor.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR,'front/build')],
+        'DIRS': [os.path.join(BASE_DIR, 'front/build')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -87,7 +87,7 @@ WSGI_APPLICATION = 'kyvor.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),}
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'), }
 }
 
 
@@ -212,8 +212,8 @@ DJOSER = {
 }
 
 
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '903512498816-8eh8pqtv1t30bh3hf4v201o8ha07taod.apps.googleusercontent.com'
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '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'
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '815509863609-asnjllosrlrh3ofms6qjig94qj8eoq1j.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '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'
 SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = ['https://www.googleapis.com/auth/userinfo.email',
                                    'https://www.googleapis.com/auth/userinfo.profile', 'openid']
 SOCIAL_AUTH_GOOGLE_OAUTH2_EXTRA_DATA = ['first_name', 'last_name']

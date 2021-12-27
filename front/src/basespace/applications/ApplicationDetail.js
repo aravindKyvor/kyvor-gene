@@ -58,7 +58,7 @@ const ViewUserDetails = (_) => {
                       </tr>
                       <tr>
                         <th>IsBillingActivated</th>
-                        <td>{state.applications.IsBillingActivated}</td>
+                        <td>{state.applications.IsBillingActivated ?  "true" : "false"}</td>
                       </tr>
                       {/* <tr>
                         <th>Features</th>

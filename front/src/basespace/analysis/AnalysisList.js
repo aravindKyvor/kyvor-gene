@@ -7,7 +7,7 @@ const ApplicationList = (props) => {
   useEffect(() => {
     setInterval(function () {
       getanalysis();
-    }, 60000);
+    }, 3000);
   }, []);
 
   let getanalysis = async () => {
@@ -62,4 +62,3 @@ const ApplicationList = (props) => {
 };
 
 export default ApplicationList;
-

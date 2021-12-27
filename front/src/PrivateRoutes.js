@@ -1,35 +1,29 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
 
-const PrivateRoute = ({
-  component: Component,
-  auth: { isAuthenticated, loading },
-  ...rest
-}) => (
-  <Route
-    {...rest}
-    render={(props) =>
-      !isAuthenticated && !loading ? (
-        <Redirect to="/user-pages/login-1" />
-      ) : (
-        <Component {...props} />
-      )
-    }
-  />
-);
-
-PrivateRoute.propTypes = {
-  auth: PropTypes.object.isRequired,
+const PrivateRoute = ({ component: Component, ...rest }) => {
+  return (
+    <Route
+      {...rest}
+      render={(props) => {
+        if (localStorage.getItem("access")) {
+          return <Component {...props} />;
+        } else {
+          return (
+            <>
+              <Redirect
+                to={{
+                  pathname: "/user-pages/login-1",
+                  state: {
+                    from: props.location,
+                  },
+                }}
+              />
+            </>
+          );
+        }
+      }}
+    />
+  );
 };
-
-const mapStateToProps = (state) => ({
-  auth: state.auth,
-});
-
-export default connect(mapStateToProps)(PrivateRoute);
-
-
-
-
+export default PrivateRoute;

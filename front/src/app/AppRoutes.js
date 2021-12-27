@@ -1,6 +1,5 @@
 import React, { Component, Suspense, lazy } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
-
 import Projectform from "./Projectform";
 import ReportsTable from "./basic-ui/ReportsTable";
 import Spinner from "../app/shared/Spinner";
@@ -9,74 +8,61 @@ import Reports1 from "./basic-ui/Reports1";
 import Basespace from "./basic-ui/Basespace";
 import Basespace1 from "./basic-ui/Basespace1";
 import Analysis2 from "./basic-ui/Analysis2";
-
 import EditForm from "./form-elements/EditForm";
 import Biosample from "../basespace/biosample/Biosample";
-
 import ProjectList from "../basespace/projects/Projectlist";
-
 import ApplicationList from "../basespace/applications/Applicationlist";
 import ApplicationDetail from "../basespace/applications/ApplicationDetail";
 import WhoAmI from "../basespace/users/WhoAmI";
 import Credits from "../basespace/credits/Credits";
-
 import AnalysisList from "../basespace/analysis/AnalysisList";
+import Analysis from "./basic-ui/Analysis";
+import PrivateRoute from "../PrivateRoutes";
+import Google from "./user-pages/Google";
+import Login from "./user-pages/Login";
+import Dashboard from "./dashboard/Dashboard";
+import Profile from "../app/shared/Profile";
+import BasicElements from "./form-elements/BasicElements";
 
+import Error404 from "./error-pages/Error404";
+import Error500 from "./error-pages/Error500";
 
-
-const Analysis = lazy(() => import("./basic-ui/Analysis"));
-
-const PrivateRoutes = lazy(() => import("../PrivateRoutes"));
-const Google = lazy(() => import("./user-pages/Google"));
-const Login = lazy(() => import("./user-pages/Login"));
-const Dashboard = lazy(() => import("./dashboard/Dashboard"));
-
-const Profile = lazy(() => import("../app/shared/Profile"));
-
-const BasicElements = lazy(() => import("./form-elements/BasicElements"));
-const Patientform = lazy(() => import("./form-elements/Patientform"));
-
-
-
-const Error404 = lazy(() => import("./error-pages/Error404"));
-const Error500 = lazy(() => import("./error-pages/Error500"));
-
-class AppPrivateRoutess extends Component {
+class AppPrivateRoutes extends Component {
   render() {
     return (
       <Suspense fallback={<Spinner />}>
         <Switch>
           {/* Dashboard Starts  */}
 
-          <PrivateRoutes exact path="/" component={Dashboard} />
+          <PrivateRoute exact path="/" component={Dashboard} />
           {/* Dashboard Ends */}
 
           {/* Basic ui Starts */}
-          <PrivateRoutes exact path="/basic-ui/Analysis" component={Analysis} />
-          <PrivateRoutes
+          <PrivateRoute exact path="/basic-ui/Analysis" component={Analysis} />
+          <PrivateRoute
             exact
             path="/basic-ui/Analysis2"
             component={Analysis2}
           />
-          <PrivateRoutes
+          <PrivateRoute
             exact
             path="/basic-ui/reports"
             component={ReportsTable}
           />
 
-          <PrivateRoutes
+          <PrivateRoute
             exact
             path="/basic-ui/Basespace1"
             component={Basespace1}
           />
-          <PrivateRoutes
+          <PrivateRoute
             exact
             path="/basic-ui/Basespace"
             component={Basespace}
           />
-          <PrivateRoutes exact path="/basic-ui/Reports1" component={Reports1} />
+          <PrivateRoute exact path="/basic-ui/Reports1" component={Reports1} />
 
-          <PrivateRoutes path="/basic-ui/Annovar" component={Annovar} />
+          <PrivateRoute path="/basic-ui/Annovar" component={Annovar} />
 
           {/* Basic ui Ends */}
 
@@ -84,7 +70,7 @@ class AppPrivateRoutess extends Component {
           {/* Shared Section Ends */}
 
           {/* Basespace Biosample Section */}
-          <PrivateRoutes
+          <PrivateRoute
             exact
             path="/basespace/biosample"
             component={Biosample}
@@ -93,18 +79,17 @@ class AppPrivateRoutess extends Component {
           {/* BaseSpace BioSample Ends */}
 
           {/*  BaseSpace Project Section */}
-          <PrivateRoutes
+          <PrivateRoute
             exact
             path="/basespace/projects/list"
             component={ProjectList}
           />
-          
 
           {/* Project Ends */}
 
           {/* Analysis secion */}
 
-          <PrivateRoutes
+          <PrivateRoute
             exact
             path="/basespace/analysis"
             component={AnalysisList}
@@ -114,59 +99,57 @@ class AppPrivateRoutess extends Component {
 
           {/* Basespace Application Section */}
 
-          <PrivateRoutes
+          <PrivateRoute
             exact
             path="/basespace/applicationlist"
             component={ApplicationList}
           />
-          <PrivateRoutes exact path="/view/:id" component={ApplicationDetail} />
+          <PrivateRoute exact path="/view/:id" component={ApplicationDetail} />
           {/* Basespace Application Ends */}
 
           {/* Basespace User Section */}
-          <PrivateRoutes
+          <PrivateRoute
             exact
             path="/basespace/users/whoami"
             component={WhoAmI}
           />
           {/* Basespace User Ends */}
 
-          <PrivateRoutes
+          <PrivateRoute
             exact
             path="/form-Elements/basic-elements"
             component={BasicElements}
           />
-          <PrivateRoutes
+          {/* <PrivateRoute
             exact
             path="/form-Elements/patientform"
             component={Patientform}
-          />
-          <PrivateRoutes
+          /> */}
+          <PrivateRoute
             exact
             path="/analysis/projectform"
             component={Projectform}
           />
 
-<PrivateRoutes exact path="/basespace/credits" component={Credits} />
+          <PrivateRoute exact path="/basespace/credits" component={Credits} />
 
-         
           <Route exact path="/user-pages/login-1" component={Login} />
           <Route exact path="/google" component={Google} />
 
-          <PrivateRoutes exact path="/update/:id" component={EditForm} />
+          <PrivateRoute exact path="/update/:id" component={EditForm} />
           <Route path="*" exact={true} component={Error404} />
 
-          <PrivateRoutes
+          <PrivateRoute
             exact
             path="/error-pages/error-500"
             component={Error500}
           />
 
-          <PrivateRoutes path="/profile" component={Profile} />
-        
+          <PrivateRoute path="/profile" component={Profile} />
         </Switch>
       </Suspense>
     );
   }
 }
 
-export default AppPrivateRoutess;
+export default AppPrivateRoutes;
