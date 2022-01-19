@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 import Table from "react-bootstrap/Table";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+toast.configure();
 const ApplicationList = (props) => {
   let [analysis, setanalysis] = useState([]);
 
@@ -40,7 +44,7 @@ const ApplicationList = (props) => {
           </tr>
         </thead>
         <tbody>
-          {analysis.map((application, index) => {
+          {analysis.length > 0 ? analysis.map((application, index) => {
             let color =
               application.Status === "Incomplete"
                 ? "red"
@@ -54,7 +58,7 @@ const ApplicationList = (props) => {
                 <td style={{ color: color }}> {application.Status}</td>
               </tr>
             );
-          })}
+          }):alert('No Data Available')}
         </tbody>
       </Table>
     </div>

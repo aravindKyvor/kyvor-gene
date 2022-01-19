@@ -56,3 +56,13 @@ class UserAccount(AbstractBaseUser, PermissionsMixin):
         return self.email
 
 
+
+
+
+# indata = indata.set_index(indata.columns.drop('Gene_refGene', 1).tolist())
+#                      .Gene_refGene.str.split(';', expand=True)
+#                      .stack()
+#                      .reset_index()
+#                      .rename(columns={0: 'Gene_refGene'})
+#                      .loc[:, indata.columns]
+                     

@@ -50,7 +50,15 @@ class Navbar extends Component {
               <ul className="navbar-nav navbar-nav-right">
                 <li className="nav-item nav-profile">
                   <Dropdown alignRight>
-                    <Dropdown.Toggle className="nav-link">
+                  
+
+               
+
+
+
+
+
+                   <Dropdown.Toggle className="nav-link">
                       <div className="nav-profile-img">
                     
                             <strong>
@@ -60,7 +68,7 @@ class Navbar extends Component {
                       </div>
 
                       
-                    </Dropdown.Toggle>
+                    </Dropdown.Toggle> 
 
                     <Dropdown.Menu className="navbar-dropdown">
                       <Dropdown.Item>
